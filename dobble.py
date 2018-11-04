@@ -15,8 +15,9 @@ from IPython.display import display
 from ipywidgets import interact, interactive, fixed
 from ipywidgets import *
 from ipykernel.pylab.backend_inline import flush_figures
+from matplotlib.backend_bases import NavigationToolbar2
 
-imgs = [  
+imgs = [
     # dark bg, natural daylight
     "./img/dobble01.jpg", "./img/dobble02.jpg", "./img/dobble03.jpg", "./img/dobble04.jpg",
     # dark bg, natural daylight, perspective
@@ -25,6 +26,28 @@ imgs = [
     "./img/dobble12.jpg", "./img/dobble13.jpg", "./img/dobble14.jpg", "./img/dobble15.jpg",
     # dark bg, directional colored light
     "./img/dobble16.jpg", "./img/dobble17.jpg", "./img/dobble18.jpg", "./img/dobble19.jpg"]
+
+displayed = 0
+
+
+def forward_click(event):
+    global displayed
+    displayed += 1 if displayed < len(imgs) - 1 else -(len(imgs) - 1)
+    imshow(data.imread(imgs[displayed]))
+    print("dobble" + "{:02d}".format(displayed) + ".jpg displayed")
+    plt.show()
+
+
+def back_click(event):
+    global displayed
+    displayed -= 1 if displayed > 0 else -(len(imgs) - 1)
+    imshow(data.imread(imgs[displayed]))
+    print("dobble" + "{:02d}".format(displayed) + ".jpg displayed")
+    plt.show()
+
+
+NavigationToolbar2.forward = forward_click
+NavigationToolbar2.back = back_click
 
 imshow(data.imread(imgs[0]))
 
