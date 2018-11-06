@@ -16,16 +16,21 @@ from ipywidgets import interact, interactive, fixed
 from ipywidgets import *
 from ipykernel.pylab.backend_inline import flush_figures
 from matplotlib.backend_bases import NavigationToolbar2
+from skimage.filters import threshold_otsu, threshold_local, threshold_adaptive
+
+warnings.simplefilter("ignore")
 
 imgs = [
+    # "./img/dobble01.jpg"
     # dark bg, natural daylight
     "./img/dobble01.jpg", "./img/dobble02.jpg", "./img/dobble03.jpg", "./img/dobble04.jpg",
-    # dark bg, natural daylight, perspective
-    "./img/dobble05.jpg", "./img/dobble06.jpg", "./img/dobble07.jpg", "./img/dobble08.jpg", "./img/dobble09.jpg", "./img/dobble10.jpg", "./img/dobble11.jpg",
-    # dark bg, directional white light
-    "./img/dobble12.jpg", "./img/dobble13.jpg", "./img/dobble14.jpg", "./img/dobble15.jpg",
-    # dark bg, directional colored light
-    "./img/dobble16.jpg", "./img/dobble17.jpg", "./img/dobble18.jpg", "./img/dobble19.jpg"]
+    # # dark bg, natural daylight, perspective
+    # "./img/dobble05.jpg", "./img/dobble06.jpg", "./img/dobble07.jpg", "./img/dobble08.jpg", "./img/dobble09.jpg", "./img/dobble10.jpg", "./img/dobble11.jpg",
+    # # dark bg, directional white light
+    # "./img/dobble12.jpg", "./img/dobble13.jpg", "./img/dobble14.jpg", "./img/dobble15.jpg",
+    # # dark bg, directional colored light
+    # "./img/dobble16.jpg", "./img/dobble17.jpg", "./img/dobble18.jpg", "./img/dobble19.jpg"
+    ]
 
 displayed = 0
 
@@ -33,7 +38,7 @@ displayed = 0
 def forward_click(event):
     global displayed
     displayed += 1 if displayed < len(imgs) - 1 else -(len(imgs) - 1)
-    imshow(data.imread(imgs[displayed]))
+    show_img(data.imread(imgs[displayed]))
     print("dobble" + "{:02d}".format(displayed) + ".jpg displayed")
     plt.show()
 
@@ -41,14 +46,30 @@ def forward_click(event):
 def back_click(event):
     global displayed
     displayed -= 1 if displayed > 0 else -(len(imgs) - 1)
-    imshow(data.imread(imgs[displayed]))
+    show_img(data.imread(imgs[displayed]))
     print("dobble" + "{:02d}".format(displayed) + ".jpg displayed")
     plt.show()
 
+def gray_out(img):
+    hsv = rgb2hsv(img)
+    hsv[:, :, 1] = 0
+    return rgb2gray(hsv2rgb(hsv))
+
+def show_img(img):
+    img = gray_out(img)
+    plt.subplot(2, 2, 1)
+    imshow(img)
+    block_size = 35
+    thresh = threshold_adaptive(img, block_size, offset=0.1)
+    plt.subplot(2, 2, 2)
+    imshow(thresh)
 
 NavigationToolbar2.forward = forward_click
 NavigationToolbar2.back = back_click
 
-imshow(data.imread(imgs[0]))
+figure(figsize=(100, 100))
+plt.gray()
+
+show_img(data.imread("./img/dobble01.jpg"))
 
 plt.show()
