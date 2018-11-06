@@ -21,15 +21,16 @@ from skimage.filters import threshold_otsu, threshold_local, threshold_adaptive
 warnings.simplefilter("ignore")
 
 imgs = [
-    # "./img/dobble01.jpg"
     # dark bg, natural daylight
     "./img/dobble01.jpg", "./img/dobble02.jpg", "./img/dobble03.jpg", "./img/dobble04.jpg",
-    # # dark bg, natural daylight, perspective
-    # "./img/dobble05.jpg", "./img/dobble06.jpg", "./img/dobble07.jpg", "./img/dobble08.jpg", "./img/dobble09.jpg", "./img/dobble10.jpg", "./img/dobble11.jpg",
-    # # dark bg, directional white light
-    # "./img/dobble12.jpg", "./img/dobble13.jpg", "./img/dobble14.jpg", "./img/dobble15.jpg",
-    # # dark bg, directional colored light
-    # "./img/dobble16.jpg", "./img/dobble17.jpg", "./img/dobble18.jpg", "./img/dobble19.jpg"
+    # dark bg, natural daylight, perspective
+    "./img/dobble05.jpg", "./img/dobble06.jpg", "./img/dobble07.jpg", "./img/dobble08.jpg", "./img/dobble09.jpg", "./img/dobble10.jpg",
+    # dark bg, directional white light
+    "./img/dobble11.jpg", "./img/dobble12.jpg",
+    # white bg, natural daylight
+    "./img/dobble13.jpg", "./img/dobble14.jpg", 
+    # dark bg, directional colored light
+    "./img/dobble15.jpg", "./img/dobble16.jpg", "./img/dobble17.jpg"
     ]
 
 displayed = 0
@@ -70,6 +71,6 @@ NavigationToolbar2.back = back_click
 figure(figsize=(100, 100))
 plt.gray()
 
-show_img(data.imread("./img/dobble01.jpg"))
+show_img(data.imread(imgs[0]))
 
 plt.show()
