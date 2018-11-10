@@ -20,6 +20,10 @@ def measure(contour):
 def draw_arrow(p1, p2):
     cv2.arrowedLine(img_arrows, (int(p1[0]), int(p1[1])), (int(p2[0]), int(p2[1])), (randint(0, 255), randint(0, 255), randint(0, 255)), 9)
 
+# Policz sumę wartości bezwzględnych różnic pomiędzy odpowiadającymi elementami tablic 
+def calculate_diff(arr1, arr2):
+	return sum(list(map(float.__abs__, list(map(float.__sub__, arr1, arr2)))))	 
+
 def match_ratio(card1, card2):
 	ratios1 = []
 	ratios2 = []
@@ -30,6 +34,7 @@ def match_ratio(card1, card2):
 	bestMatch = (0, 0)
 	minDiff = abs(ratios1[0]-ratios2[0])
 	for i in range(len(ratios1)):
+		# for j in range(i, len(ratios2)):
 		for j in range(len(ratios2)):
 			if (abs(ratios1[i]-ratios2[j]) < minDiff):
 				minDiff = abs(ratios1[i]-ratios2[j])
@@ -41,7 +46,27 @@ def match_ratio(card1, card2):
 	print('p1 = ', p1, ', p2 = ', p2)
 	draw_arrow(p1, p2)
 
-# fig, ax = plt.subplots(9, 1, figsize=(40,80))
+def match_hu(card1, card2):
+	hu1 = []
+	hu2 = []
+	for sign in card1["signs"]:
+		hu1.append(cv2.HuMoments(cv2.moments(cv2.cvtColor(sign['pic'], cv2.COLOR_BGR2GRAY))).flatten()) 
+	for sign in card2["signs"]:
+		hu2.append(cv2.HuMoments(cv2.moments(cv2.cvtColor(sign['pic'], cv2.COLOR_BGR2GRAY))).flatten())
+	bestMatch = (0, 0)
+	minDiff = calculate_diff(hu1[0], hu2[0])
+	for i in range(len(card1['signs'])):
+		for j in range(len(card2['signs'])):
+			if(calculate_diff(hu1[i], hu2[i]) < minDiff):
+				minDiff = calculate_diff(hu1[i], hu2[i])
+				bestMatch = (i, j)
+	p1 = card1["signs"][bestMatch[0]]['coords']
+	p2 = card2["signs"][bestMatch[1]]['coords']
+	print('hu1 = ', hu1, '\nhu2 = ', hu2)
+	print('bestMatch= ', bestMatch, 'minDiff = ', minDiff)
+	print('p1 = ', p1, ', p2 = ', p2)
+	draw_arrow(p1, p2)
+
 
 file = './img/dobble02.jpg'
 
@@ -109,7 +134,9 @@ ax = plt.subplot(gs[0,:])
 
 for i in range(len(cards)):
 	for j in range(i, len(cards)):
-		if (i!=j): match_ratio(cards[i], cards[j])
+		if (i!=j): 
+			# match_ratio(cards[i], cards[j])
+			match_hu(cards[i], cards[j])
 
 ax.imshow(cv2.cvtColor(img_arrows, cv2.COLOR_BGR2RGB))
 
