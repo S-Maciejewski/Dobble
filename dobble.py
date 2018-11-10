@@ -1,76 +1,142 @@
-from pylab import *
-import skimage as ski
-from skimage import data, io, filters, exposure, measure, color, feature
-from skimage.filters import rank
-from skimage import img_as_float, img_as_ubyte
-from skimage.morphology import disk
-import skimage.morphology as mp
-from skimage import util
-from skimage.color import rgb2hsv, hsv2rgb, rgb2gray
-from skimage.filters.edges import convolve
-from matplotlib import pylab as plt
+import matplotlib.gridspec as gridspec
+import math
+import cv2
 import numpy as np
-from numpy import array
-from IPython.display import display
-from ipywidgets import interact, interactive, fixed
-from ipywidgets import *
-from ipykernel.pylab.backend_inline import flush_figures
-from matplotlib.backend_bases import NavigationToolbar2
-from skimage.filters import threshold_otsu, threshold_local, threshold_adaptive
+from matplotlib import pyplot as plt
+import warnings
+from random import randint
+
+def coords(contour, i):
+    xmin = int(np.amin(contour[:,0,1]))
+    xmax = int(np.amax(contour[:,0,1]))
+    ymin = int(np.amin(contour[:,0,0]))
+    ymax = int(np.amax(contour[:,0,0]))
+    return xmin-i, xmax+i, ymin-i, ymax+i
+    
+def measure(contour):
+    xmin, xmax, ymin, ymax = coords(contour, 0)
+    return xmax-xmin,ymax-ymin
+
+def draw_arrow(p1, p2):
+    cv2.arrowedLine(img_arrows, (int(p1[0]), int(p1[1])), (int(p2[0]), int(p2[1])), (randint(0, 255), randint(0, 255), randint(0, 255)), 9)
+
+def match_ratio(card1, card2):
+	ratios1 = []
+	ratios2 = []
+	for sign in card1["signs"]:
+		ratios1.append(len(sign['pic'][0]) / len(sign['pic'])) 
+	for sign in card2["signs"]:
+		ratios2.append(len(sign['pic'][0]) / len(sign['pic'])) 
+	bestMatch = (0, 0)
+	minDiff = abs(ratios1[0]-ratios2[0])
+	for i in range(len(ratios1)):
+		for j in range(len(ratios2)):
+			if (abs(ratios1[i]-ratios2[j]) < minDiff):
+				minDiff = abs(ratios1[i]-ratios2[j])
+				bestMatch = (i, j)
+	p1 = card1["signs"][bestMatch[0]]['coords']
+	p2 = card2["signs"][bestMatch[1]]['coords']
+	print('ratios1 = ', ratios1, '\nratios2 = ', ratios2)
+	print('bestMatch= ', bestMatch, 'minDiff = ', minDiff)
+	print('p1 = ', p1, ', p2 = ', p2)
+	draw_arrow(p1, p2)
+
+# fig, ax = plt.subplots(9, 1, figsize=(40,80))
+
+file = './img/dobble02.jpg'
+
+img_col = cv2.imread(file)
+img_arrows = cv2.imread(file)
+img = cv2.imread(file, 0)
 
 warnings.simplefilter("ignore")
 
-imgs = [
-    # dark bg, natural daylight
-    "./img/dobble01.jpg", "./img/dobble02.jpg", "./img/dobble03.jpg", "./img/dobble04.jpg",
-    # dark bg, natural daylight, perspective
-    "./img/dobble05.jpg", "./img/dobble06.jpg", "./img/dobble07.jpg", "./img/dobble08.jpg", "./img/dobble09.jpg", "./img/dobble10.jpg",
-    # dark bg, directional white light
-    "./img/dobble11.jpg", "./img/dobble12.jpg",
-    # white bg, natural daylight
-    "./img/dobble13.jpg", "./img/dobble14.jpg", 
-    # dark bg, directional colored light
-    "./img/dobble15.jpg", "./img/dobble16.jpg", "./img/dobble17.jpg"
-    ]
 
-displayed = 0
+cards = []
+cardsIndexInHierarchy = []
+
+ret,th1 = cv2.threshold(img,175,255,cv2.THRESH_BINARY)
+th1 = cv2.erode(th1,np.ones((3,3),np.uint8),iterations = 1)
+im2, contours, hierarchy = cv2.findContours(th1, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
 
 
-def forward_click(event):
-    global displayed
-    displayed += 1 if displayed < len(imgs) - 1 else -(len(imgs) - 1)
-    show_img(data.imread(imgs[displayed]))
-    print("dobble" + "{:02d}".format(displayed) + ".jpg displayed")
-    plt.show()
+#wycinanie kart i dodawanie wyciętych do listy 'cards'
+for i, h in enumerate(hierarchy[0]):
+    if (h[3] == -1):
+        xmin, xmax, ymin, ymax = coords(contours[i], 10)
+        if (xmax-xmin > 40 or ymax-ymin > 40):
+            cards.append({"pic": img_col[xmin:xmax,ymin:ymax], "IndexInHierarchy": i, "signs": []})
+            cardsIndexInHierarchy.append(i)
+#         cv2.drawContours(img_col, contours, i, (0,0,255), 2)
 
 
-def back_click(event):
-    global displayed
-    displayed -= 1 if displayed > 0 else -(len(imgs) - 1)
-    show_img(data.imread(imgs[displayed]))
-    print("dobble" + "{:02d}".format(displayed) + ".jpg displayed")
-    plt.show()
+for card in cards:
+    index = hierarchy[0][card["IndexInHierarchy"],2]
+    while True:
+        cnt = contours[index]
+        width, height = measure(contours[index])
+        if (width > 40 or height > 40):
+            rect = cv2.minAreaRect(cnt)
+#             box = cv2.boxPoints(rect)
+#             box = np.int0(box)
+#             cv2.drawContours(img_col,[box],0,(0,255,0),2)  
+            
+            rotated = cv2.warpAffine(img_col,  #zdjęcie
+                                     cv2.getRotationMatrix2D(rect[0],rect[2],1), #macierz rotacji
+                                     img.shape[1::-1]) #wymiary zdjęcia
+            
+            xmin = int(rect[0][1]-rect[1][1]/2)
+            xmax = int(rect[0][1]+rect[1][1]/2)
+            ymin = int(rect[0][0]-rect[1][0]/2)
+            ymax = int(rect[0][0]+rect[1][0]/2)
+            
+            cropped = rotated[xmin:xmax,ymin:ymax]
+            
+            if(xmax-xmin > ymax-ymin): cropped = np.rot90(cropped, 1)
+            picDict = {"pic": cropped, "card": index, "coords": rect[0]}
+            card["signs"].append(picDict)
 
-def gray_out(img):
-    hsv = rgb2hsv(img)
-    hsv[:, :, 1] = 0
-    return rgb2gray(hsv2rgb(hsv))
+        if (hierarchy[0,index,0] == (-1)): break
+        index = hierarchy[0,index,0]
 
-def show_img(img):
-    img = gray_out(img)
-    plt.subplot(2, 2, 1)
-    imshow(img)
-    block_size = 35
-    thresh = threshold_adaptive(img, block_size, offset=0.1)
-    plt.subplot(2, 2, 2)
-    imshow(thresh)
+images = [img, th1]
 
-NavigationToolbar2.forward = forward_click
-NavigationToolbar2.back = back_click
 
-figure(figsize=(100, 100))
-plt.gray()
+fig = plt.figure(figsize=(30, 80))
+gs = gridspec.GridSpec(2*len(cards)+1, 10, wspace=0.2, hspace=0.2)
+ax = plt.subplot(gs[0,:])
+# ax = plt.subplot(111)	# do dokładnego testowania zdjęcia w konsoli (wyświetlanie tylko jednego)
 
-show_img(data.imread(imgs[0]))
+for i in range(len(cards)):
+	for j in range(i, len(cards)):
+		if (i!=j): match_ratio(cards[i], cards[j])
 
+ax.imshow(cv2.cvtColor(img_arrows, cv2.COLOR_BGR2RGB))
+
+fig.add_subplot(ax)
+
+
+for j, card in enumerate(cards):
+    ax = plt.subplot(gs[2*j+1, :])
+    ax.imshow(cv2.cvtColor(card["pic"], cv2.COLOR_BGR2RGB))
+    fig.add_subplot(ax)
+
+    for i, sign in enumerate(card["signs"]):
+        ax = plt.subplot(gs[2*(j+1), i])
+        ax.imshow(cv2.cvtColor(sign["pic"], cv2.COLOR_BGR2RGB))
+        fig.add_subplot(ax)
+                          
 plt.show()
+
+
+# ax[0].imshow(cv2.cvtColor(img_col, cv2.COLOR_BGR2RGB))
+# ax[1].hist(img.flatten(),256,[0,256], color = 'r')
+# for i in range(2,4):
+#     ax[i].imshow(images[i-2],'gray')
+
+# for i, pic in enumerate(cards):
+#     ax[i+4].imshow(cv2.cvtColor(pic, cv2.COLOR_BGR2RGB))
+    
+# for i, pic in enumerate(signs):
+#     ax[i+1].imshow(cv2.cvtColor(pic["pic"], cv2.COLOR_BGR2RGB))
+#     ax[i+1].set_title(pic["card"])
