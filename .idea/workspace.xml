@@ -2,15 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d65a5fe4-e075-438d-9c2a-c7b4847fde31" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dobbleCorrectVersion.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/dobbleCorrectVersion.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/sign00.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/sign010.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/sign02.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/sign05.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/sign06.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/sign07.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/sign08.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/sign09.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img_arrows.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/img_arrows.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/sign0160.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/results/sign0160.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/sign0276.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/results/sign0276.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/sign0299.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/results/sign0299.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/sign0326.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/results/sign0326.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/sign0361.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/results/sign0361.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/sign0378.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/results/sign0378.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/sign0390.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/results/sign0390.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/sign0391.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/results/sign0391.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/results/sign10.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/results/sign10.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/results/sign11.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/results/sign11.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/results/sign12.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/results/sign12.jpg" afterDir="false" />
@@ -19,27 +23,44 @@
       <change beforePath="$PROJECT_DIR$/results/sign15.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/results/sign15.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/results/sign16.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/results/sign16.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/results/sign17.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/results/sign17.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/sign18.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/sign210.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/sign211.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/sign212.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/sign213.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/sign214.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/sign215.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/sign20.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/results/sign20.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/sign21.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/results/sign21.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/results/sign22.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/results/sign22.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/sign24.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/results/sign24.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/results/sign25.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/results/sign25.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/sign26.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/results/sign26.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/results/sign27.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/results/sign27.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/results/sign28.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/results/sign28.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/results/sign30.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/results/sign30.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/sign313.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/sign320.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/sign321.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/sign330.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/sign331.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/sign332.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/sign333.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/sign334.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/sign35.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/sign31.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/results/sign31.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/sign310.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/results/sign310.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/sign311.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/results/sign311.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/sign32.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/results/sign32.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/sign33.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/results/sign33.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/sign34.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/results/sign34.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/sign39.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/results/sign39.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/sign4212.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/results/sign4212.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/sign4215.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/results/sign4215.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/sign4258.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/results/sign4258.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/sign4313.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/results/sign4313.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/sign4327.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/results/sign4327.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/sign4342.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/results/sign4342.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/sign484.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/results/sign484.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/sign490.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/results/sign490.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/sign50.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/results/sign50.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/sign510.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/results/sign510.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/sign511.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/results/sign511.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/sign512.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/results/sign512.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/sign514.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/results/sign514.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/sign515.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/results/sign515.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/sign54.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/results/sign54.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/sign58.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/results/sign58.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/th0.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/th1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/th2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/th3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/th4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/th5.jpg" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -61,33 +82,46 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="598" />
+          <entry key="gitignore" value="66" />
+          <entry key="py" value="665" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="598" />
+          <entry key="PLAIN_TEXT" value="66" />
+          <entry key="Python" value="665" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
+          <entry key="gitignore" value="1" />
           <entry key="jpg" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="Image" value="3" />
+          <entry key="PLAIN_TEXT" value="1" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dobbleCorrectVersion.ipynb">
           <provider selected="true" editor-type-id="ipnb-editor">
             <state>
               <selected id="0" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="5" selection-start-column="5" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -101,6 +135,7 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/dobbleCorrectVersion.ipynb" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -116,6 +151,23 @@
     <option name="width" value="1402" />
     <option name="height" value="1029" />
   </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State />
+          <State>
+            <id>Spelling</id>
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>SpellCheckingInspection</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
+  </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
@@ -127,6 +179,11 @@
             <path>
               <item name="Dobble" type="b2602c69:ProjectViewProjectNode" />
               <item name="Dobble" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Dobble" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Dobble" type="462c0819:PsiDirectoryNode" />
+              <item name="thresh" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -140,7 +197,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+    <property name="settings.editor.selected.configurable" value="Errors" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -191,7 +248,7 @@
     <frame x="52" y="-11" width="1869" height="1092" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15485996" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15485996" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -205,7 +262,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.3294979" />
+      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.3294979" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.32845187" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -243,6 +300,13 @@
       <provider selected="true" editor-type-id="ipnb-editor">
         <state>
           <selected id="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="5" selection-start-column="5" selection-end-column="5" />
         </state>
       </provider>
     </entry>
