@@ -2,52 +2,44 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d65a5fe4-e075-438d-9c2a-c7b4847fde31" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/Dobble.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Dobble.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/other.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/other.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dobbleCorrectVersion.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/dobbleCorrectVersion.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/sign00.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/results/sign00.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/sign010.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/results/sign010.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/sign011.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/sign012.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/sign02.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/results/sign02.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/sign04.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/sign05.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/results/sign05.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/sign06.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/results/sign06.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/sign07.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/results/sign07.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/sign08.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/results/sign08.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/sign09.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/results/sign09.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/sign00.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/sign010.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/sign02.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/sign05.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/sign06.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/sign07.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/sign08.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/sign09.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/results/sign10.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/results/sign10.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/sign110.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/sign11.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/results/sign11.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/results/sign12.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/results/sign12.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/results/sign13.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/results/sign13.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/results/sign14.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/results/sign14.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/results/sign15.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/results/sign15.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/results/sign16.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/results/sign16.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/results/sign17.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/results/sign17.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/sign18.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/results/sign18.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/sign19.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/sign210.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/results/sign210.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/sign211.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/results/sign211.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/sign212.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/results/sign212.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/sign213.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/results/sign213.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/sign214.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/results/sign214.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/sign215.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/results/sign215.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/sign216.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/sign217.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/sign18.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/sign210.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/sign211.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/sign212.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/sign213.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/sign214.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/sign215.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/sign22.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/results/sign22.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/results/sign25.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/results/sign25.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/sign27.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/results/sign27.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/results/sign28.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/results/sign28.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/results/sign30.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/results/sign30.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/sign320.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/results/sign320.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/sign322.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/sign330.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/results/sign330.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/sign331.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/results/sign331.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/sign332.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/results/sign332.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/sign333.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/results/sign333.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/sign334.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/results/sign334.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/sign335.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/sign336.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/sign35.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/results/sign35.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/sign313.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/sign320.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/sign321.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/sign330.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/sign331.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/sign332.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/sign333.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/sign334.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/sign35.jpg" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -69,12 +61,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="517" />
+          <entry key="py" value="598" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="517" />
+          <entry key="Python" value="598" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -213,7 +205,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.3294979" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.3294979" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.32845187" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
