@@ -63,21 +63,33 @@ def draw_arrow(p1, p2):
 def get_dominant(img):
     data = np.float32(img.reshape(-1, 3))
     k = 5
-    attempts = 5
+    attempts = 10
     criteria = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 200, .1)
     flags = cv2.KMEANS_RANDOM_CENTERS
+    # print('data len', len(data))
     _, labels, palette = cv2.kmeans(data, k, None, criteria, attempts, flags)
     _, counts = np.unique(labels, return_counts=True)
     dominant = palette[np.argmax(counts)]
     return dominant
 
-def calculate_diff_vector(arr1, arr2):
-	return list(map(np.float32.__abs__, list(map(np.float32.__sub__, arr1, arr2))))
+def get_average(img):
+    data = np.float32(img.reshape(-1, 3))
+    return img.mean(axis=0).mean(axis=0)
 
-def check_color(symbol1, symbol2):
+def calculate_diff_vector(arr1, arr2):
+	return list(map(np.float32.__abs__, list(map(np.float32.__sub__, np.float32(arr1), np.float32(arr2)))))
+
+def check_dominant(symbol1, symbol2):
     diff_vector = calculate_diff_vector(get_dominant(symbol1), get_dominant(symbol2))
-    margin = np.float32(10.0)
-    print('diff_vector ', calculate_diff_vector(get_dominant(symbol1), get_dominant(symbol2)))
+    margin = np.float32(15.0)
+    print('diff_vector ', diff_vector)
+    if (diff_vector[0] < margin and diff_vector[1] < margin and diff_vector[2] < margin): return True
+    else: return False
+
+def check_average(symbol1, symbol2):
+    diff_vector = calculate_diff_vector(get_average(symbol1), get_average(symbol2))
+    margin = np.float32(15.0)
+    print('diff_vector ', diff_vector)
     if (diff_vector[0] < margin and diff_vector[1] < margin and diff_vector[2] < margin): return True
     else: return False
 
@@ -86,17 +98,20 @@ def match_hu(card1, card2):
     min_diff = 1
     for i in range(len(card1['signs'])):
         for j in range(len(card2['signs'])):
-            print('symbols ', i, j)
-            if(check_color(card1["signs"][i]["pic"], card2["signs"][j]["pic"])):
-                hu_moment = cv2.matchShapes(card1["signs"][i]["contour"],
-                            card2["signs"][j]["contour"], 1, 0.0)  # różnica w obiektach
-                if(hu_moment < min_diff):
-                    # print('symbols ', i, j)
-                    # if(check_color(card1["signs"][i]["pic"], card2["signs"][j]["pic"])):
-                    min_diff = hu_moment
-                    best_match = (i, j)
-                if(hu_moment < 0.1): 
-                    print("great match: ", i, j, " ", hu_moment)
+            color_match = True
+            hu_moment = cv2.matchShapes(card1["signs"][i]["contour"],
+                        card2["signs"][j]["contour"], 1, 0.0)  # różnica w obiektach
+            if(hu_moment < 0.2):
+                print('symbols ', i, j) #tylko jeśli hu<0.2 licz dominantę (albo średnią)
+                color_match = check_average(card1["signs"][i]["pic"], card2["signs"][j]["pic"])
+                color_match = check_dominant(card1["signs"][i]["pic"], card2["signs"][j]["pic"])
+            if(hu_moment < min_diff and color_match):
+                # print('symbols ', i, j)
+                # if(check_dominant(card1["signs"][i]["pic"], card2["signs"][j]["pic"])):
+                min_diff = hu_moment
+                best_match = (i, j)
+            if(hu_moment < 0.1): 
+                print("great match: ", i, j, " ", hu_moment)
 
     p1 = card1["signs"][best_match[0]]['coords']
     p2 = card2["signs"][best_match[1]]['coords']
@@ -119,14 +134,17 @@ def getRGBthresh(img_col, blue, green, red):
     img_th =  cv2.bitwise_or(cv2.bitwise_or(img_red_th, img_green_th, mask=None), img_blue_th, mask=None)
     return img_th
 
-def eraseBackground(img, contours):     #jak zmienić tło na białe 
+def eraseBackground(img, contours, mode):
     stencil = np.zeros(img.shape).astype(img.dtype)
     cv2.fillPoly(stencil, contours, [255, 255, 255])
+    stencil_inv = cv2.bitwise_not(stencil)
     result = cv2.bitwise_and(stencil, img)
+    if mode == "white":
+        result = cv2.add(result, stencil_inv)
     return result
 
             
-file = './img/dobble26.jpg'
+file = './img/dobble03.jpg'
 
 img_col = cv2.imread(file)
 img_gray = cv2.cvtColor(img_col, cv2.COLOR_BGR2GRAY)
@@ -144,7 +162,7 @@ if (np.mean(img_gray) < 150):  #dla wszystkich zdjęć bez białego tła
     th1 = cv2.erode(th1,np.ones((3,3),np.uint8),iterations = 3)
     th1 = cv2.dilate(th1, np.ones((3,3),np.uint8), iterations = 2)
     im2, contours, hierarchy = cv2.findContours(th1, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-    img_no_background = eraseBackground(img_col, contours)
+    img_no_background = eraseBackground(img_col, contours, "white")
     
     #wycięcie kart 
     for i, contour in enumerate(contours):
@@ -162,6 +180,7 @@ if (np.mean(img_gray) < 150):  #dla wszystkich zdjęć bez białego tła
             for signContour in contours:
                 sxmin, sxmax, symin, symax = coords(signContour, 0)
                 if ((sxmax-sxmin > 40 or symax-symin > 40) and not (sxmin < 10 or symin < 10 or sxmax > card.shape[0]-10)):
+                    cardWithoutBg = eraseBackground(card, [signContour], "white")
                     signPic, centerCoords = findMinRectangle(card, signContour, 3)
                     signThPic, c = findMinRectangle(cardRGBthresh, signContour, 3)
                     coordx =  centerCoords[1] + cxmin
@@ -237,7 +256,7 @@ for j, card in enumerate(cards):
         ax.imshow(sign["th"], 'gray')
         fig.add_subplot(ax)       
         
-# plt.show()
+plt.show()
 
 
 # ax[0].imshow(cv2.cvtColor(img_col, cv2.COLOR_BGR2RGB))
