@@ -154,12 +154,78 @@ Również w tym przypadku dokładność dopasowania to 100\% przypadków, jednak
 \includegraphics[scale=1]{2.2/card2sign0.jpg}
 \end{center}
 Takie przypadki to jeden z powodów, dla których w naszym algorytmie porównywania kolor jest brany pod uwagę jako ostatni - przy sztucznym oświetleniu różnica w kolorach może być znacząca. W tym przypadku właśnie tak jest - środek lewego kwiatka to R: 222, G: 197, B: 17 a środek prawego to R: 249, G: 244, B: 5.
-
-
-
-
-
-
+\newpage
+\subsection{Czterech graczy, białe tło}
+Białe tło zdjęcia to szczególnie trudny przypadek, ponieważ nie można w łatwy sposób znaleźć konturów kart. Na tym zdjęciu dodatkowym utrudnieniem jest światło, padające wyraźnie z lewej strony. Liczymy na 10 prawidłowych dopasowań.
+\begin{center}
+\includegraphics[scale=0.25]{2.3/dobble14.jpg}
+\end{center}
+Spróbujmy zastosować threshold:
+\begin{center}
+\includegraphics[scale=0.25]{2.3/th1.jpg}
+\end{center}
+\newpage
+Po zastosowaniu filtru threshold widać z jakim problemem mamy tu do czynienia - karty są nieodróżnialne od tła. Spróbujmy zatem wymazać tło:
+\begin{center}
+\includegraphics[scale=0.25]{2.3/20.jpg}
+\end{center}
+Poza artefaktem w prawym dolnym rogu (ciemny róg zdjęcia) dostajemy zdjęcie, które w zasadzie jest gotowe do zastosowania wersji RGB filtru threshold w celu znalezienia symboli. Znajdujemy wszystkie symbole (łącznie z artefaktem) i wycinamy ich kontury:
+\begin{center}
+\includegraphics[scale=0.25]{2.3/sign02.jpg}
+\includegraphics[scale=0.25]{2.3/sign03.jpg}
+\includegraphics[scale=0.25]{2.3/sign04.jpg}
+\includegraphics[scale=0.25]{2.3/sign05.jpg}
+\includegraphics[scale=0.25]{2.3/sign06.jpg}
+\includegraphics[scale=0.25]{2.3/sign07.jpg}
+\includegraphics[scale=0.25]{2.3/sign11.jpg}
+\includegraphics[scale=0.25]{2.3/sign12.jpg}
+\includegraphics[scale=0.25]{2.3/sign13.jpg}
+\includegraphics[scale=0.25]{2.3/sign14.jpg}
+\includegraphics[scale=0.25]{2.3/sign15.jpg}
+\includegraphics[scale=0.25]{2.3/sign16.jpg}
+\includegraphics[scale=0.25]{2.3/sign17.jpg}
+\includegraphics[scale=0.25]{2.3/sign20.jpg}
+\includegraphics[scale=0.25]{2.3/sign21.jpg}
+\includegraphics[scale=0.25]{2.3/sign22.jpg}
+\includegraphics[scale=0.25]{2.3/sign23.jpg}
+\includegraphics[scale=0.25]{2.3/sign24.jpg}
+\includegraphics[scale=0.25]{2.3/sign25.jpg}
+\includegraphics[scale=0.25]{2.3/sign26.jpg}
+\includegraphics[scale=0.25]{2.3/sign30.jpg}
+\includegraphics[scale=0.25]{2.3/sign31.jpg}
+\includegraphics[scale=0.25]{2.3/sign32.jpg}
+\includegraphics[scale=0.25]{2.3/sign33.jpg}
+\includegraphics[scale=0.25]{2.3/sign34.jpg}
+\includegraphics[scale=0.25]{2.3/sign35.jpg}
+\includegraphics[scale=0.25]{2.3/sign36.jpg}
+\includegraphics[scale=0.25]{2.3/sign37.jpg}
+\includegraphics[scale=0.25]{2.3/sign38.jpg}
+\includegraphics[scale=0.25]{2.3/sign39.jpg}
+\includegraphics[scale=0.25]{2.3/sign40.jpg}
+\includegraphics[scale=0.25]{2.3/sign41.jpg}
+\includegraphics[scale=0.25]{2.3/sign42.jpg}
+\includegraphics[scale=0.25]{2.3/sign43.jpg}
+\includegraphics[scale=0.25]{2.3/sign44.jpg}
+\includegraphics[scale=0.25]{2.3/sign45.jpg}
+\includegraphics[scale=0.25]{2.3/sign46.jpg}
+\end{center}
+Następnie próbujemy te zarysy symboli pogrupować w karty, żeby wiedzieć w jaki sposób je porównać, oraz żeby odrzucić artefakty. Grupowanie polega na sprawdzaniu odległości między symbolami i po jego przeprowadzeniu dostajemy zbiory symboli pogrupowane w karty, np. środkowa karta to:
+\begin{center}
+\includegraphics[scale=0.5]{2.3/card1sign0.jpg}
+\includegraphics[scale=0.5]{2.3/card1sign1.jpg}
+\includegraphics[scale=0.5]{2.3/card1sign2.jpg}
+\includegraphics[scale=0.5]{2.3/card1sign3.jpg}
+\includegraphics[scale=0.5]{2.3/card1sign4.jpg}
+\includegraphics[scale=0.5]{2.3/card1sign5.jpg}
+\includegraphics[scale=0.5]{2.3/card1sign6.jpg}
+\includegraphics[scale=0.5]{2.3/card1sign7.jpg}
+\end{center}
+\newpage
+Mimo, że nie mamy zapisanych obrazów kart jako takich, to na samych zbiorach ich symboli możemy wywołać funkcję porównywania kart, bo korzysta ona ze zbioru symboli karty i współrzędnych tych symboli na zdjęciu (w celu rysowania strzałek). Po jej wywołaniu dostajemy:
+\begin{center}
+\includegraphics[scale=0.25]{2.3/img_arrows0.jpg}
+\end{center}
+Jak widać, dokładność porównania to w tym przypadku 80\%, mamy dwa błędne dopasowania - wyżej można zauważyć, że wśród znalezionych symboli był tylko jeden z dwóch kwiatków potrzebnych do dopasowania górnych kart, dodatkowo nie udało się też dopasować okularów będących na kartach o dużej różnicy naświetlenia.
 
 
 
