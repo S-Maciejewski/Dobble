@@ -46,7 +46,11 @@ Na podstawie poniższego zdjęcia oczekujemy, że program odnajdzie wszystkie 12
 \begin{center}
 \includegraphics[scale=0.25]{2.1/dobble04.jpg}
 \end{center}
-Najpierw zajmujemy się wycięciem wszystkich 6 kart i wybieleniem tła (w celu prostszego użycia filtru threshold na późniejszym etapie przetwarzania). Nasza tablica kart zawiera teraz takie karty:\\
+Zanim wytniemy karty, musimy nałożyć odpowiednie filtry na zdjęcie, żeby móc wywołać algorytm szukający konturów. W naszym wypadku takimi filtrami są threshold, erozja i dylatacja, po których zastosowaniu zdjęcie wygląda tak:\\
+\begin{center}
+\includegraphics[scale=0.20]{2.1/th1.jpg}
+\end{center}
+Najpierw zajmujemy się wycięciem wszystkich 6 kart i wybieleniem tła (w celu prostszego użycia filtru threshold na późniejszym etapie przetwarzania). Lista wyciętych kart po tych operacjach zawiera następujące obrazy:\\
 \begin{center}
 \includegraphics[scale=0.25]{2.1/card0.jpg}
 \includegraphics[scale=0.25]{2.1/card1.jpg}
@@ -55,7 +59,7 @@ Najpierw zajmujemy się wycięciem wszystkich 6 kart i wybieleniem tła (w celu 
 \includegraphics[scale=0.25]{2.1/card4.jpg}
 \includegraphics[scale=0.25]{2.1/card5.jpg}
 \end{center}
-\newpage
+Każda karta jest teraz indywidualnie rozjaśniana lub przyciemniana za pomocą korekcji gamma, żeby zniewlować różnice w oświetleniu wynikające np. z różnej odległości od źródła światła (w przypadku sztucznego oświetlenia).
 Następnie do każdej karty stosujemy threshold RGB, żeby następnie móc odnaleźć kontury symboli. Obrazy, na których szukamy konturów wyglądają w tej chwili tak:\\
 \begin{center}
 \includegraphics[scale=0.25]{2.1/0.jpg}
@@ -65,39 +69,109 @@ Następnie do każdej karty stosujemy threshold RGB, żeby następnie móc odnal
 \includegraphics[scale=0.25]{2.1/4.jpg}
 \includegraphics[scale=0.25]{2.1/5.jpg}
 \end{center}
-Po odnalezieniu konturów każdego symbolu i wycięciu najmniejszego prostokąta w którym się on znajduje, otrzymujemy zbiór kształtów, np. dla pierwszej karty jest to:\\
+Po odnalezieniu konturów każdego symbolu i wycięciu najmniejszego prostokąta w którym się on znajduje, otrzymujemy zbiór kształtów, np. dla drugiej karty jest to:\\
 \begin{center}
-\includegraphics[scale=0.5]{2.1/sign00.jpg}
-\includegraphics[scale=0.5]{2.1/sign01.jpg}
-\includegraphics[scale=0.5]{2.1/sign02.jpg}
-\includegraphics[scale=0.5]{2.1/sign03.jpg}
-\includegraphics[scale=0.5]{2.1/sign04.jpg}
-\includegraphics[scale=0.5]{2.1/sign05.jpg}
-\includegraphics[scale=0.5]{2.1/sign06.jpg}
-\includegraphics[scale=0.5]{2.1/sign07.jpg}
-\includegraphics[scale=0.5]{2.1/sign08.jpg}
+\includegraphics[scale=0.5]{2.1/sign10.jpg}
+\includegraphics[scale=0.5]{2.1/sign11.jpg}
+\includegraphics[scale=0.5]{2.1/sign12.jpg}
+\includegraphics[scale=0.5]{2.1/sign13.jpg}
+\includegraphics[scale=0.5]{2.1/sign14.jpg}
+\includegraphics[scale=0.5]{2.1/sign15.jpg}
+\includegraphics[scale=0.5]{2.1/sign16.jpg}
+\includegraphics[scale=0.5]{2.1/sign17.jpg}
 \end{center}
-Jak widać jest problem z symbolem duszka, który podzielił się na dwa znaki - jasną, prawie białą górę i niebieski dół. Nie powinno to sprawiać problemów na dalszym etapie przetwarzania o ile wszystkie duszki na zdjęciu zachowają się w podobny sposób - wówczas porównamy np. jedynie dolne części. Pozostaje jeszcze usunąć (wybielić) niepotrzebne tło obrazków. Po tym etapie przetwarzania wiemy, że pierwsza karta składa się z następujących symboli:
+Pozostaje jeszcze usunąć (wybielić) niepotrzebne tło obrazków. Po tym etapie przetwarzania wiemy, że druga karta składa się z następujących symboli:
 \begin{center}
-\includegraphics[scale=0.4]{2.1/card0.jpg} \\
-\includegraphics[scale=0.5]{2.1/card0sign0.jpg}
-\includegraphics[scale=0.5]{2.1/card0sign1.jpg}
-\includegraphics[scale=0.5]{2.1/card0sign2.jpg}
-\includegraphics[scale=0.5]{2.1/card0sign3.jpg}
-\includegraphics[scale=0.5]{2.1/card0sign4.jpg}
-\includegraphics[scale=0.5]{2.1/card0sign5.jpg}
-\includegraphics[scale=0.5]{2.1/card0sign6.jpg}
-\includegraphics[scale=0.5]{2.1/card0sign7.jpg}
-\includegraphics[scale=0.5]{2.1/card0sign8.jpg}
+\includegraphics[scale=0.4]{2.1/card1.jpg} \\
+\includegraphics[scale=0.5]{2.1/card1sign0.jpg}
+\includegraphics[scale=0.5]{2.1/card1sign1.jpg}
+\includegraphics[scale=0.5]{2.1/card1sign2.jpg}
+\includegraphics[scale=0.5]{2.1/card1sign3.jpg}
+\includegraphics[scale=0.5]{2.1/card1sign4.jpg}
+\includegraphics[scale=0.5]{2.1/card1sign5.jpg}
+\includegraphics[scale=0.5]{2.1/card1sign6.jpg}
+\includegraphics[scale=0.5]{2.1/card1sign7.jpg}
 \end{center}
-
-\newpage
 Na tym etapie pozostaje już tylko wywołanie funkcji dopasowywania dla wszystkich znalezionych kart - po jej wywołaniu otrzymujemy następujący obraz:
 \begin{center}
 \includegraphics[scale=0.25]{2.1/img_arrows0.jpg}
 \end{center}
 Jak widać, w tym przypadku udało się odnaleźć 100\% dopasowań.
+\newpage
 
+\subsection{Dwóch graczy, w perspektywie, sztuczne oświetlenie, duża różnica jasności między kartami}
+W wypadku tego zdjęcia liczymy na odnalezienie 3 dopasowań w trudnych warunkach oświetleniowych - lewa strona zdjęcia jest prześwietlona, dodatkowo zdjęcie jest pod kątem:\\
+\begin{center}
+\includegraphics[scale=0.25]{2.2/dobble11.jpg}
+\end{center}
+Po zastosowaniu filtrów w celu wycięcia konturów dostajemy:
+\begin{center}
+\includegraphics[scale=0.20]{2.2/th1.jpg}
+\end{center}
+\newpage
+Jak widać, takie filtry sprawiają że jedyne co można na tym etapie wyciąć to same karty. Po ich wycięciu postępujemy analogicznie do poprzedniego przykładu i obrazy w liście kart to:
+\begin{center}
+\includegraphics[scale=0.25]{2.2/card2.jpg}
+\includegraphics[scale=0.25]{2.2/card0.jpg}
+\includegraphics[scale=0.25]{2.2/card1.jpg}
+\end{center}
+Można tu zauważyć jak duże są różnice w oświetleniu i perspektywie poszczególnych kart na tym zdjęciu. Następnie stosujemy threshold RGB dla kart:
+\begin{center}
+\includegraphics[scale=0.25]{2.2/2.jpg}
+\includegraphics[scale=0.25]{2.2/0.jpg}
+\includegraphics[scale=0.25]{2.2/1.jpg}
+\end{center}
+Po wycięciu dla danej, np. środkowej, karty kształtów dostajemy jej symbole:
+\begin{center}
+\includegraphics[scale=0.5]{2.2/sign00.jpg}
+\includegraphics[scale=0.5]{2.2/sign01.jpg}
+\includegraphics[scale=0.5]{2.2/sign02.jpg}
+\includegraphics[scale=0.5]{2.2/sign03.jpg}
+\includegraphics[scale=0.5]{2.2/sign04.jpg}
+\includegraphics[scale=0.5]{2.2/sign05.jpg}
+\includegraphics[scale=0.5]{2.2/sign06.jpg}
+\includegraphics[scale=0.5]{2.2/sign07.jpg}
+\end{center}
+\begin{center}
+\includegraphics[scale=0.5]{2.2/card0sign0.jpg}
+\includegraphics[scale=0.5]{2.2/card0sign1.jpg}
+\includegraphics[scale=0.5]{2.2/card0sign2.jpg}
+\includegraphics[scale=0.5]{2.2/card0sign3.jpg}
+\includegraphics[scale=0.5]{2.2/card0sign4.jpg}
+\includegraphics[scale=0.5]{2.2/card0sign5.jpg}
+\includegraphics[scale=0.5]{2.2/card0sign6.jpg}
+\includegraphics[scale=0.5]{2.2/card0sign7.jpg}
+\end{center}
+Widać, że symbol bałwana nie wyciął się do końca z powodu bardzo dużej różnicy jasności między jednym a drugim końcem tego symbolu (dół bałwana leży blisko najmocniej oświetlonej krawędzi karty), jednak symbol wciąż zachował swoją charakterystykę kolorystyczną i większość swojego kształtu. 
+\newpage
+Pozostaje uruchomić algorytm porównywania:
+\begin{center}
+\includegraphics[scale=0.25]{2.2/img_arrows0.jpg}
+\end{center}
+Również w tym przypadku dokładność dopasowania to 100\% przypadków, jednak warto zauważyć jak bardzo różne pod względem koloru są symbole kwiatka na skrajnych kartach:
+\begin{center}
+\includegraphics[scale=1]{2.2/card1sign3.jpg}
+\includegraphics[scale=1]{2.2/card2sign0.jpg}
+\end{center}
+Takie przypadki to jeden z powodów, dla których w naszym algorytmie porównywania kolor jest brany pod uwagę jako ostatni - przy sztucznym oświetleniu różnica w kolorach może być znacząca. W tym przypadku właśnie tak jest - środek lewego kwiatka to R: 222, G: 197, B: 17 a środek prawego to R: 249, G: 244, B: 5.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage
 \section*{Wnioski}
 \forceindent Porównanie zapisanych widm z tablicami spektralnymi pokazuje, że w lampach A-C znajdują się następujące pierwiastki chemiczne :
 \begin{center}
