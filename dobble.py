@@ -50,33 +50,6 @@ def draw_number(number, coordinates):
     cv2.putText(img_arrows, number, coordinates, cv2.FONT_HERSHEY_SIMPLEX, 1.5, (255, 51, 153), 4)
 
 
-# # Policz sumę wartości bezwzględnych różnic pomiędzy odpowiadającymi elementami tablic 
-# def calculate_diff(arr1, arr2):
-# 	return sum(list(map(float.__abs__, list(map(float.__sub__, arr1, arr2)))))
-
-# def match_ratio(card1, card2):
-# 	ratios1 = []
-# 	ratios2 = []
-# 	for sign in card1["signs"]:
-# 		ratios1.append(len(sign['pic'][0]) / len(sign['pic'])) 
-# 	for sign in card2["signs"]:
-# 		ratios2.append(len(sign['pic'][0]) / len(sign['pic'])) 
-# 	best_match = (0, 0)
-# 	min_diff = abs(ratios1[0]-ratios2[0])
-# 	for i in range(len(ratios1)):
-# 		# for j in range(i, len(ratios2)):
-# 		for j in range(len(ratios2)):
-# 			if (abs(ratios1[i]-ratios2[j]) < min_diff):
-# 				min_diff = abs(ratios1[i]-ratios2[j])
-# 				best_match = (i, j)
-# 	p1 = card1["signs"][best_match[0]]['coords']
-# 	p2 = card2["signs"][best_match[1]]['coords']
-# 	print('ratios1 = ', ratios1, '\nratios2 = ', ratios2)
-# 	print('best_match = ', best_match, 'min_diff = ', min_diff)
-# 	print('p1 = ', p1, ', p2 = ', p2)
-# 	draw_arrow(p1, p2)
-
-
 def get_dominant(img):
     data = np.float32(img.reshape(-1, 3))
     ka = 5
@@ -201,7 +174,7 @@ def eraseBackground(img, contourslist, mode):
     return result
 
             
-file = './img/dobble25.jpg'
+file = './img/dobble04.jpg'
 img_col = cv2.imread(file)
 img_gray = cv2.cvtColor(img_col, cv2.COLOR_BGR2GRAY)
 img_arrows = img_col
@@ -223,7 +196,7 @@ if np.mean(img_gray) < 150:  # dla wszystkich zdjęć bez białego tła
 
             imgNoBg = eraseBackground(img_col, [contour], "white")
             card = imgNoBg[cxmin:cxmax, cymin:cymax]
-            cv2.imwrite("./cards/" + str(i) + ".jpg", card)
+            cv2.imwrite("./cards/card" + str(i) + ".jpg", card)
             print("mean ", np.mean(cv2.cvtColor(card, cv2.COLOR_RGB2GRAY)))
             cardRGBthresh = getRGBthresh(card, 120, 110, 140, i)
             cardRGBthresh = cv2.dilate(cardRGBthresh, np.ones((3, 3), np.uint8), iterations=1)
@@ -246,9 +219,8 @@ if np.mean(img_gray) < 150:  # dla wszystkich zdjęć bez białego tła
 
                     coordx = centerCoords[1] + cxmin
                     coordy = centerCoords[0] + cymin
-
+                    cv2.imwrite("./signs/card" + str(i) + "sign" + str(len(signs)) + ".jpg", signPic)
                     draw_number(str(len(signs)), (int(coordy), int(coordx)))
-
                     signs.append({"pic": signPic, "th": signThPic, "contour": signContour, "coords": [coordy, coordx]})
             
             cards.append({"pic": card, "signs": signs})
@@ -322,7 +294,6 @@ for j, card in enumerate(cards):
     #     ax.imshow(sign["th"], 'gray')
     #     fig.add_subplot(ax)
     for i, sign in enumerate(card["signs"]):
-
         cv2.imwrite("./thresh/sign" + str(j) + str(i) + ".jpg", sign["th"])
         hsv = cv2.cvtColor(sign["pic"], cv2.COLOR_RGB2HSV)
         print("Card ", j, " sign ", i, "S: ", np.mean(hsv[:, :, 0]), "H: ", np.mean(hsv[:, :, 1]), "V: ", np.mean(hsv[:, :, 2]))
