@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.15)  17 NOV 2018 15:54
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.15)  17 NOV 2018 16:35
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1182,50 +1182,154 @@ File: 2.1/5.jpg Graphic file (type jpg)
 <use 2.1/5.jpg>
 Package pdftex.def Info: 2.1/5.jpg  used on input line 66.
 (pdftex.def)             Requested size: 97.11256pt x 96.6107pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 68--69
+
+ []
+
+<2.1/sign00.jpg, id=29, 73.27374pt x 76.285pt>
+File: 2.1/sign00.jpg Graphic file (type jpg)
+<use 2.1/sign00.jpg>
+Package pdftex.def Info: 2.1/sign00.jpg  used on input line 70.
+(pdftex.def)             Requested size: 36.63676pt x 38.1424pt.
+<2.1/sign01.jpg, id=30, 95.35625pt x 119.44624pt>
+File: 2.1/sign01.jpg Graphic file (type jpg)
+<use 2.1/sign01.jpg>
+Package pdftex.def Info: 2.1/sign01.jpg  used on input line 71.
+(pdftex.def)             Requested size: 47.678pt x 59.72296pt.
+<2.1/sign02.jpg, id=31, 74.2775pt x 77.28876pt>
+File: 2.1/sign02.jpg Graphic file (type jpg)
+<use 2.1/sign02.jpg>
+Package pdftex.def Info: 2.1/sign02.jpg  used on input line 72.
+(pdftex.def)             Requested size: 37.13866pt x 38.64427pt.
+<2.1/sign03.jpg, id=32, 61.22874pt x 87.32625pt>
+File: 2.1/sign03.jpg Graphic file (type jpg)
+<use 2.1/sign03.jpg>
+Package pdftex.def Info: 2.1/sign03.jpg  used on input line 73.
+(pdftex.def)             Requested size: 30.61429pt x 43.66301pt.
+<2.1/sign04.jpg, id=33, 59.22125pt x 88.33pt>
+File: 2.1/sign04.jpg Graphic file (type jpg)
+<use 2.1/sign04.jpg>
+Package pdftex.def Info: 2.1/sign04.jpg  used on input line 74.
+(pdftex.def)             Requested size: 29.61053pt x 44.16489pt.
+<2.1/sign05.jpg, id=34, 32.12pt x 64.24pt>
+File: 2.1/sign05.jpg Graphic file (type jpg)
+<use 2.1/sign05.jpg>
+Package pdftex.def Info: 2.1/sign05.jpg  used on input line 75.
+(pdftex.def)             Requested size: 16.05995pt x 32.11992pt.
+<2.1/sign06.jpg, id=35, 44.165pt x 56.21pt>
+File: 2.1/sign06.jpg Graphic file (type jpg)
+<use 2.1/sign06.jpg>
+Package pdftex.def Info: 2.1/sign06.jpg  used on input line 76.
+(pdftex.def)             Requested size: 22.08243pt x 28.10492pt.
+<2.1/sign07.jpg, id=36, 133.49875pt x 144.54pt>
+File: 2.1/sign07.jpg Graphic file (type jpg)
+<use 2.1/sign07.jpg>
+Package pdftex.def Info: 2.1/sign07.jpg  used on input line 77.
+(pdftex.def)             Requested size: 66.74919pt x 72.2698pt.
+<2.1/sign08.jpg, id=37, 79.29625pt x 85.31876pt>
+File: 2.1/sign08.jpg Graphic file (type jpg)
+<use 2.1/sign08.jpg>
+Package pdftex.def Info: 2.1/sign08.jpg  used on input line 78.
+(pdftex.def)             Requested size: 39.64801pt x 42.65926pt.
+File: 2.1/card0.jpg Graphic file (type jpg)
+<use 2.1/card0.jpg>
+Package pdftex.def Info: 2.1/card0.jpg  used on input line 82.
+(pdftex.def)             Requested size: 158.58968pt x 161.80162pt.
+<2.1/card0sign0.jpg, id=38, 73.27374pt x 76.285pt>
+File: 2.1/card0sign0.jpg Graphic file (type jpg)
+<use 2.1/card0sign0.jpg>
+Package pdftex.def Info: 2.1/card0sign0.jpg  used on input line 83.
+(pdftex.def)             Requested size: 36.63676pt x 38.1424pt.
+<2.1/card0sign1.jpg, id=39, 95.35625pt x 119.44624pt>
+File: 2.1/card0sign1.jpg Graphic file (type jpg)
+<use 2.1/card0sign1.jpg>
+Package pdftex.def Info: 2.1/card0sign1.jpg  used on input line 84.
+(pdftex.def)             Requested size: 47.678pt x 59.72296pt.
+<2.1/card0sign2.jpg, id=40, 74.2775pt x 77.28876pt>
+File: 2.1/card0sign2.jpg Graphic file (type jpg)
+<use 2.1/card0sign2.jpg>
+Package pdftex.def Info: 2.1/card0sign2.jpg  used on input line 85.
+(pdftex.def)             Requested size: 37.13866pt x 38.64427pt.
+<2.1/card0sign3.jpg, id=41, 61.22874pt x 87.32625pt>
+File: 2.1/card0sign3.jpg Graphic file (type jpg)
+<use 2.1/card0sign3.jpg>
+Package pdftex.def Info: 2.1/card0sign3.jpg  used on input line 86.
+(pdftex.def)             Requested size: 30.61429pt x 43.66301pt.
+<2.1/card0sign4.jpg, id=42, 59.22125pt x 88.33pt>
+File: 2.1/card0sign4.jpg Graphic file (type jpg)
+<use 2.1/card0sign4.jpg>
+Package pdftex.def Info: 2.1/card0sign4.jpg  used on input line 87.
+(pdftex.def)             Requested size: 29.61053pt x 44.16489pt.
+<2.1/card0sign5.jpg, id=43, 32.12pt x 64.24pt>
+File: 2.1/card0sign5.jpg Graphic file (type jpg)
+<use 2.1/card0sign5.jpg>
+Package pdftex.def Info: 2.1/card0sign5.jpg  used on input line 88.
+(pdftex.def)             Requested size: 16.05995pt x 32.11992pt.
+<2.1/card0sign6.jpg, id=44, 44.165pt x 56.21pt>
+File: 2.1/card0sign6.jpg Graphic file (type jpg)
+<use 2.1/card0sign6.jpg>
+Package pdftex.def Info: 2.1/card0sign6.jpg  used on input line 89.
+(pdftex.def)             Requested size: 22.08243pt x 28.10492pt.
+<2.1/card0sign7.jpg, id=45, 133.49875pt x 144.54pt>
+File: 2.1/card0sign7.jpg Graphic file (type jpg)
+<use 2.1/card0sign7.jpg>
+Package pdftex.def Info: 2.1/card0sign7.jpg  used on input line 90.
+(pdftex.def)             Requested size: 66.74919pt x 72.2698pt.
+<2.1/card0sign8.jpg, id=46, 79.29625pt x 85.31876pt>
+File: 2.1/card0sign8.jpg Graphic file (type jpg)
+<use 2.1/card0sign8.jpg>
+Package pdftex.def Info: 2.1/card0sign8.jpg  used on input line 91.
+(pdftex.def)             Requested size: 39.64801pt x 42.65926pt.
 [3 <./2.1/0.jpg> <./2.1/1.jpg> <./2.1/2.jpg> <./2.1/3.jpg> <./2.1/4.jpg> <./2.1
-/5.jpg>]
-Underfull \hbox (badness 10000) in paragraph at lines 71--72
+/5.jpg> <./2.1/sign00.jpg> <./2.1/sign01.jpg> <./2.1/sign02.jpg> <./2.1/sign03.
+jpg> <./2.1/sign04.jpg> <./2.1/sign05.jpg> <./2.1/sign06.jpg> <./2.1/sign07.jpg
+> <./2.1/sign08.jpg> <./2.1/card0sign0.jpg> <./2.1/card0sign1.jpg> <./2.1/card0
+sign2.jpg> <./2.1/card0sign3.jpg> <./2.1/card0sign4.jpg> <./2.1/card0sign5.jpg>
+ <./2.1/card0sign6.jpg> <./2.1/card0sign7.jpg> <./2.1/card0sign8.jpg>]
+<2.1/img_arrows0.jpg, id=50, 1606.0pt x 1204.5pt>
+File: 2.1/img_arrows0.jpg Graphic file (type jpg)
+<use 2.1/img_arrows0.jpg>
+Package pdftex.def Info: 2.1/img_arrows0.jpg  used on input line 97.
+(pdftex.def)             Requested size: 401.49902pt x 301.12427pt.
+LaTeX Font Info:    External font `plex10' loaded for size
+(Font)              <10> on input line 104.
+LaTeX Font Info:    External font `plex10' loaded for size
+(Font)              <7> on input line 104.
+LaTeX Font Info:    External font `plex10' loaded for size
+(Font)              <5> on input line 104.
+
+Underfull \hbox (badness 10000) in paragraph at lines 150--151
 
  []
 
-LaTeX Font Info:    External font `plex10' loaded for size
-(Font)              <10> on input line 80.
-LaTeX Font Info:    External font `plex10' loaded for size
-(Font)              <7> on input line 80.
-LaTeX Font Info:    External font `plex10' loaded for size
-(Font)              <5> on input line 80.
 
-Underfull \hbox (badness 10000) in paragraph at lines 126--127
+Underfull \hbox (badness 10000) in paragraph at lines 152--153
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 128--129
-
- []
-
-[4] (./sprawozdanie.aux) ) 
+[4 <./2.1/img_arrows0.jpg>] [5] (./sprawozdanie.aux) ) 
 Here is how much of TeX's memory you used:
- 24002 strings out of 492982
- 603937 string characters out of 6134895
+ 24097 strings out of 492982
+ 605757 string characters out of 6134895
  775442 words of memory out of 5000000
- 27126 multiletter control sequences out of 15000+600000
+ 27202 multiletter control sequences out of 15000+600000
  13283 words of font info for 38 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  62i,8n,96p,1225b,609s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips/pl/plm
-s.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/pl/plrm.enc}{/usr/share/te
-xlive/texmf-dist/fonts/enc/dvips/pl/plmi.enc}</usr/share/texlive/texmf-dist/fon
-ts/type1/public/pl/plbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
-/pl/plbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/pl/plmi10.pfb>
-</usr/share/texlive/texmf-dist/fonts/type1/public/pl/plr10.pfb></usr/share/texl
-ive/texmf-dist/fonts/type1/public/pl/plr12.pfb></usr/share/texlive/texmf-dist/f
-onts/type1/public/pl/plr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
-c/pl/plsy10.pfb>
-Output written on sprawozdanie.pdf (4 pages, 1218729 bytes).
+{/usr/share/texlive/texmf
+-dist/fonts/enc/dvips/pl/plms.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvip
+s/pl/plrm.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/pl/plmi.enc}</usr/
+share/texlive/texmf-dist/fonts/type1/public/pl/plbx10.pfb></usr/share/texlive/t
+exmf-dist/fonts/type1/public/pl/plbx12.pfb></usr/share/texlive/texmf-dist/fonts
+/type1/public/pl/plmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/p
+l/plr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/pl/plr12.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/pl/plr17.pfb></usr/share/texlive/
+texmf-dist/fonts/type1/public/pl/plsy10.pfb>
+Output written on sprawozdanie.pdf (5 pages, 2272785 bytes).
 PDF statistics:
- 64 PDF objects out of 1000 (max. 8388607)
- 37 compressed objects within 1 object stream
+ 86 PDF objects out of 1000 (max. 8388607)
+ 39 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 78 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 173 words of extra memory for PDF output out of 10000 (max. 10000000)
 

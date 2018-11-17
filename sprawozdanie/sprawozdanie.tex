@@ -65,14 +65,38 @@ Następnie do każdej karty stosujemy threshold RGB, żeby następnie móc odnal
 \includegraphics[scale=0.25]{2.1/4.jpg}
 \includegraphics[scale=0.25]{2.1/5.jpg}
 \end{center}
-
+Po odnalezieniu konturów każdego symbolu i wycięciu najmniejszego prostokąta w którym się on znajduje, otrzymujemy zbiór kształtów, np. dla pierwszej karty jest to:\\
+\begin{center}
+\includegraphics[scale=0.5]{2.1/sign00.jpg}
+\includegraphics[scale=0.5]{2.1/sign01.jpg}
+\includegraphics[scale=0.5]{2.1/sign02.jpg}
+\includegraphics[scale=0.5]{2.1/sign03.jpg}
+\includegraphics[scale=0.5]{2.1/sign04.jpg}
+\includegraphics[scale=0.5]{2.1/sign05.jpg}
+\includegraphics[scale=0.5]{2.1/sign06.jpg}
+\includegraphics[scale=0.5]{2.1/sign07.jpg}
+\includegraphics[scale=0.5]{2.1/sign08.jpg}
+\end{center}
+Jak widać jest problem z symbolem duszka, który podzielił się na dwa znaki - jasną, prawie białą górę i niebieski dół. Nie powinno to sprawiać problemów na dalszym etapie przetwarzania o ile wszystkie duszki na zdjęciu zachowają się w podobny sposób - wówczas porównamy np. jedynie dolne części. Pozostaje jeszcze usunąć (wybielić) niepotrzebne tło obrazków. Po tym etapie przetwarzania wiemy, że pierwsza karta składa się z następujących symboli:
+\begin{center}
+\includegraphics[scale=0.4]{2.1/card0.jpg} \\
+\includegraphics[scale=0.5]{2.1/card0sign0.jpg}
+\includegraphics[scale=0.5]{2.1/card0sign1.jpg}
+\includegraphics[scale=0.5]{2.1/card0sign2.jpg}
+\includegraphics[scale=0.5]{2.1/card0sign3.jpg}
+\includegraphics[scale=0.5]{2.1/card0sign4.jpg}
+\includegraphics[scale=0.5]{2.1/card0sign5.jpg}
+\includegraphics[scale=0.5]{2.1/card0sign6.jpg}
+\includegraphics[scale=0.5]{2.1/card0sign7.jpg}
+\includegraphics[scale=0.5]{2.1/card0sign8.jpg}
+\end{center}
 
 \newpage
-Następnym etapem doświadczenia była rejestracja widm lamp 1, 2 i 3 (dla różnych kolorów) oraz kilku widm lampy 4 dla różnych natężeń prądu. Otrzymane zostały następujące widma:\\
-
-%\includegraphics[width=\textwidth]{lampa1}
-%Widmo lampy 1.\\
-%\\
+Na tym etapie pozostaje już tylko wywołanie funkcji dopasowywania dla wszystkich znalezionych kart - po jej wywołaniu otrzymujemy następujący obraz:
+\begin{center}
+\includegraphics[scale=0.25]{2.1/img_arrows0.jpg}
+\end{center}
+Jak widać, w tym przypadku udało się odnaleźć 100\% dopasowań.
 
 \section*{Wnioski}
 \forceindent Porównanie zapisanych widm z tablicami spektralnymi pokazuje, że w lampach A-C znajdują się następujące pierwiastki chemiczne :
