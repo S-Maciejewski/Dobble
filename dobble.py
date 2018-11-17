@@ -2,16 +2,14 @@ import matplotlib.gridspec as gridspec
 import cv2
 import numpy as np
 from matplotlib import pyplot as plt
-import warnings
 from random import randint
 from sklearn.cluster import KMeans
 
 
 def process_gamma(img, gamma):
     inv_gamma = 1.0 / gamma
-    # inv_gamma = gamma
     table = np.array([((v / 255.0) ** inv_gamma) * 255 for v in np.arange(0, 256)]).astype("uint8")
-    return cv2.LUT(img, table)
+    return cv2.LUT(cv2.LUT(img, table), table)
 
 
 def linear_adjustment(x, minx, maxx, minvalue, maxvalue):
@@ -25,7 +23,7 @@ def gamma_filter(img, aim):
     if aim == "white_bg":
         gamma = linear_adjustment(img_mean, 152, 167, 1.1, 1.5)
     if aim == "card":
-        gamma = linear_adjustment(img_mean, 152, 220, 0.8, 1.5)
+        gamma = linear_adjustment(img_mean, 153, 240, 0.6, 1.5)
 
     print(gamma)
 
@@ -40,56 +38,16 @@ def coords(ccontour, offset):
     return coord_xmin, coord_xmax, coord_ymin, coord_ymax
 
 
-def draw_arrow(p1, p2):
+def draw_arrow(img_arrows, p1, p2):
     cv2.arrowedLine(img_arrows, (int(p1[0]), int(p1[1])), (int(p2[0]), int(p2[1])),
                     (randint(0, 255), randint(0, 255), randint(0, 255)), 5)
+    return img_arrows
 
 
 # zapisywanie numeru symbolu na zdjęciu
-def draw_number(number, coordinates):
+def draw_number(img_arrows, number, coordinates):
     cv2.putText(img_arrows, number, coordinates, cv2.FONT_HERSHEY_SIMPLEX, 1.5, (255, 51, 153), 4)
-
-
-def get_dominant(img):
-    data = np.float32(img.reshape(-1, 3))
-    ka = 5
-    attempts = 10
-    criteria = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 200, .1)
-    flags = cv2.KMEANS_RANDOM_CENTERS
-    # print('data len', len(data))
-    _, labels, palette = cv2.kmeans(data, ka, None, criteria, attempts, flags)
-    _, counts = np.unique(labels, return_counts=True)
-    dominant = palette[np.argmax(counts)]
-    return dominant
-
-
-def get_average(img):
-    data = np.float32(img.reshape(-1, 3))
-    return img.mean(axis=0).mean(axis=0)
-
-
-def calculate_diff_vector(arr1, arr2):
-    return list(map(np.float32.__abs__, list(map(np.float32.__sub__, np.float32(arr1), np.float32(arr2)))))
-
-
-def check_dominant(symbol1, symbol2):
-    diff_vector = calculate_diff_vector(get_dominant(symbol1), get_dominant(symbol2))
-    margin = np.float32(15.0)
-    # print('diff_vector ', diff_vector)
-    if diff_vector[0] < margin and diff_vector[1] < margin and diff_vector[2] < margin:
-        return True
-    else:
-        return False
-
-
-def check_average(symbol1, symbol2):
-    diff_vector = calculate_diff_vector(get_average(symbol1), get_average(symbol2))
-    margin = np.float32(15.0)
-    # print('diff_vector ', diff_vector)
-    if diff_vector[0] < margin and diff_vector[1] < margin and diff_vector[2] < margin:
-        return True
-    else:
-        return False
+    return img_arrows
 
 
 def hsv_values(img):
@@ -112,7 +70,7 @@ def compare_ratios(pic1, pic2):
     return abs(r1-r2)
 
 
-def match_hu(card1, card2):
+def match_hu(img_arrows, card1, card2):
 
     great_matches = []
     for a, sign1 in enumerate(card1['signs']):
@@ -121,7 +79,7 @@ def match_hu(card1, card2):
             hu_moment = cv2.matchShapes(sign1["contour"], sign2["contour"], 1, 0.0)  # różnica w obiektach
             color_match = compare_hsv_values(sign1["pic"], sign2["pic"])
             ratio_match = compare_ratios(sign1["pic"], sign2["pic"])
-            if hu_moment < 0.5 and ratio_match < 0.30:
+            if hu_moment < 0.4 and ratio_match < 0.30:
                 print(a, b, " : ", hu_moment, "    ", color_match, "     ", ratio_match)
                 great_matches.append((sign1, sign2, a, b, hu_moment))
 
@@ -139,7 +97,8 @@ def match_hu(card1, card2):
         print("best match")
         p1 = best_match[0]['coords']
         p2 = best_match[1]['coords']
-        draw_arrow(p1, p2)
+        img_arrows = draw_arrow(img_arrows, p1, p2)
+        return img_arrows
 
 
 def findMinRectangle(img, cnt, offset):
@@ -173,143 +132,128 @@ def eraseBackground(img, contourslist, mode):
         result = cv2.add(result, stencil_inv)
     return result
 
-            
-file = './img/dobble04.jpg'
-img_col = cv2.imread(file)
-img_gray = cv2.cvtColor(img_col, cv2.COLOR_BGR2GRAY)
-img_arrows = img_col
-cards = []
 
-if np.mean(img_gray) < 150:  # dla wszystkich zdjęć bez białego tła
-    print("ciemne tło")
-    # znalezienie konturów kart i wyczyszczenie tła dookoła
-    ret, th1 = cv2.threshold(img_gray, 115, 255, cv2.THRESH_BINARY)
-    th1 = cv2.erode(th1, np.ones((3, 3), np.uint8), iterations=3)
-    th1 = cv2.dilate(th1, np.ones((3, 3), np.uint8), iterations=2)
-    im2, contours, hierarchy = cv2.findContours(th1, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+def find_matches(file, allcards, number):
+    img_col = cv2.imread(file)
+    img_gray = cv2.cvtColor(img_col, cv2.COLOR_BGR2GRAY)
+    img_arrows = img_col
+    cards = []
 
-    
-    # wycięcie kart
-    for i, contour in enumerate(contours):
-        cxmin, cxmax, cymin, cymax = coords(contour, 15)
-        if cxmax-cxmin > 100 or cymax-cymin > 100:
-
-            imgNoBg = eraseBackground(img_col, [contour], "white")
-            card = imgNoBg[cxmin:cxmax, cymin:cymax]
-            cv2.imwrite("./cards/card" + str(i) + ".jpg", card)
-            print("mean ", np.mean(cv2.cvtColor(card, cv2.COLOR_RGB2GRAY)))
-            cardRGBthresh = getRGBthresh(card, 120, 110, 140, i)
-            cardRGBthresh = cv2.dilate(cardRGBthresh, np.ones((3, 3), np.uint8), iterations=1)
-
-            cv2.imwrite("./thresh/" + str(i) + ".jpg", cardRGBthresh)
-
-            im2, contours, hierarchy = cv2.findContours(cardRGBthresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-    
-            # wycięcie znaków z kart
-            signs = []
-            for signContour in contours:
-                xmin, xmax, ymin, ymax = coords(signContour, 0)
-                if (xmax - xmin > 40 or ymax - ymin > 40) and not (xmin < 10 or ymin < 10 or xmax > card.shape[0] - 10):
-
-                    cardNoBg = eraseBackground(card, [signContour], "white")
-                    cardRGBthreshNoBg = eraseBackground(cardRGBthresh, [signContour], "black")
-
-                    signPic, centerCoords = findMinRectangle(cardNoBg, signContour, 3)
-                    signThPic, c = findMinRectangle(cardRGBthreshNoBg, signContour, 3)
-
-                    coordx = centerCoords[1] + cxmin
-                    coordy = centerCoords[0] + cymin
-                    cv2.imwrite("./signs/card" + str(i) + "sign" + str(len(signs)) + ".jpg", signPic)
-                    draw_number(str(len(signs)), (int(coordy), int(coordx)))
-                    signs.append({"pic": signPic, "th": signThPic, "contour": signContour, "coords": [coordy, coordx]})
-            
-            cards.append({"pic": card, "signs": signs})
+    if np.mean(img_gray) < 150:  # dla wszystkich zdjęć bez białego tła
+        print("ciemne tło")
+        # znalezienie konturów kart i wyczyszczenie tła dookoła
+        ret, th1 = cv2.threshold(img_gray, 115, 255, cv2.THRESH_BINARY)
+        th1 = cv2.erode(th1, np.ones((3, 3), np.uint8), iterations=3)
+        th1 = cv2.dilate(th1, np.ones((3, 3), np.uint8), iterations=2)
+        im2, contours, hierarchy = cv2.findContours(th1, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 
 
-else:    # dla zdjęć z białym tłem
-    print("białe tło")
-    img_col = gamma_filter(img_col, "white_bg")
-    print("mean after ", np.mean(cv2.cvtColor(img_col, cv2.COLOR_RGB2GRAY)))
-    img_th = getRGBthresh(img_col, 150, 130, 130, 1)
-    # img_th = cv2.dilate(img_th, np.ones((3, 3), np.uint8), iterations=1)
-    cv2.imwrite("./th1.jpg", img_th)
-    im2, contours, hierarchy = cv2.findContours(img_th, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-    # img_th = cv2.erode(img_th, np.ones((3, 3), np.uint8), iterations=1)
-    cv2.imwrite("./debug/1.jpg", img_col)
+        # wycięcie kart
+        for i, contour in enumerate(contours):
+            cxmin, cxmax, cymin, cymax = coords(contour, 15)
+            if cxmax-cxmin > 100 or cymax-cymin > 100:
 
-    # znalezienie poprawnych znaków na zdjęciu
-    signsCenters = []
-    properContours = []
-    for contour in contours:
-        xmin, xmax, ymin, ymax = coords(contour, 0)
-        if 50 < xmax-xmin < 300 and ymax-ymin > 50 and not (xmin < 200 and ymax > 1400):
-            signsCenters.append([(xmax+xmin)/2, (ymax+ymin)/2])
-            properContours.append(contour)
+                imgNoBg = eraseBackground(img_col, [contour], "white")
+                card = imgNoBg[cxmin:cxmax, cymin:cymax]
 
-    img_bg = eraseBackground(img_col, properContours, "white")
-    cv2.imwrite("./debug/2.jpg", img_bg)
+                card = gamma_filter(card, "card")
 
-    # pogrupowanie znaków w karty
-    signsIdentity = KMeans(n_clusters=int(len(signsCenters)/8), random_state=0).fit(signsCenters).labels_  
-    for k in range(int(len(signsCenters)/8)):
-        signsContours = [contour for j, contour in enumerate(properContours) if signsIdentity[j] == k]
-        signsList = []
-        for signContour in signsContours:
-            signPic, centerCoords = findMinRectangle(img_col, signContour, 0)
-            signThPic, c = findMinRectangle(img_th, signContour, 0)
-            draw_number(str(len(signsList)), (int(centerCoords[0]), int(centerCoords[1])))
-            signsList.append({"pic": signPic, "th": signThPic, "contour": signContour, "coords": centerCoords})
-        cards.append({"pic": None, "signs": signsList})
-        
-        # TODO wycięcie karty, niekoniecznie potrzebne, ale fajne do debugu
+                cv2.imwrite("./cards/" + str(i) + ".jpg", card)
+                print("mean ", np.mean(cv2.cvtColor(card, cv2.COLOR_RGB2GRAY)))
+                cardRGBthresh = getRGBthresh(card, 120, 110, 140, i)
+                cardRGBthresh = cv2.dilate(cardRGBthresh, np.ones((3, 3), np.uint8), iterations=1)
+                cv2.imwrite("./thresh/" + str(i) + ".jpg", cardRGBthresh)
 
-        
-fig = plt.figure(figsize=(20, 80))
-gs = gridspec.GridSpec(2*5+1, 20, wspace=0.2, hspace=0.2)
-ax = plt.subplot(gs[0, :])
+                im2, contours, hierarchy = cv2.findContours(cardRGBthresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 
-# calculate differences and pick best match
-for i in range(len(cards)):
-    for j in range(i+1, len(cards)):
-        # match_ratio(cards[i], cards[j])
-        print("Cards ", i, j)
-        match_hu(cards[i], cards[j])
+                # wycięcie znaków z kart
+                signs = []
+                for signContour in contours:
+                    xmin, xmax, ymin, ymax = coords(signContour, 0)
+                    if (xmax - xmin > 40 or ymax - ymin > 40) and not (xmin < 10 or ymin < 10 or xmax > card.shape[0] - 10):
 
-        
-cv2.imwrite("./img_arrows.jpg", img_arrows)
-# ax.imshow(img_arrows)   
-# fig.add_subplot(ax)
+                        cardNoBg = eraseBackground(card, [signContour], "white")
+                        cardRGBthreshNoBg = eraseBackground(cardRGBthresh, [signContour], "black")
 
-for j, card in enumerate(cards):
-    # ax = plt.subplot(gs[j, :])
-    # ax.imshow(card["pic"])
-    # fig.add_subplot(ax)
+                        signPic, centerCoords = findMinRectangle(cardNoBg, signContour, 3)
+                        signThPic, c = findMinRectangle(cardRGBthreshNoBg, signContour, 3)
 
-    # for i, sign in enumerate(card["signs"]):
-    #     ax = plt.subplot(gs[2*j+1, i])
-    #     ax.imshow(sign["pic"])
-    #     fig.add_subplot(ax)
-    #
-    #     ax = plt.subplot(gs[2*j+2, i])
-    #     ax.imshow(sign["th"], 'gray')
-    #     fig.add_subplot(ax)
-    for i, sign in enumerate(card["signs"]):
-        cv2.imwrite("./thresh/sign" + str(j) + str(i) + ".jpg", sign["th"])
-        hsv = cv2.cvtColor(sign["pic"], cv2.COLOR_RGB2HSV)
-        print("Card ", j, " sign ", i, "S: ", np.mean(hsv[:, :, 0]), "H: ", np.mean(hsv[:, :, 1]), "V: ", np.mean(hsv[:, :, 2]))
+                        coordx = centerCoords[1] + cxmin
+                        coordy = centerCoords[0] + cymin
+                        cv2.imwrite("./signs/card" + str(i) + "sign" + str(len(signs)) + ".jpg", signPic)
+                        draw_number(img_arrows, str(len(signs)), (int(coordy), int(coordx)))
+
+                        signs.append({"pic": signPic, "th": signThPic, "contour": signContour, "coords": [coordy, coordx]})
+
+                cards.append({"pic": card, "signs": signs})
+                allcards.append({"pic": card, "signs": signs})
 
 
-# plt.show()
+    else:    # dla zdjęć z białym tłem
+        print("białe tło")
+        img_col = gamma_filter(img_col, "white_bg")
+        print("mean after ", np.mean(cv2.cvtColor(img_col, cv2.COLOR_RGB2GRAY)))
+        img_th = getRGBthresh(img_col, 150, 130, 130, 1)
+        # img_th = cv2.dilate(img_th, np.ones((3, 3), np.uint8), iterations=1)
+        cv2.imwrite("./th1.jpg", img_th)
+        im2, contours, hierarchy = cv2.findContours(img_th, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+        # img_th = cv2.erode(img_th, np.ones((3, 3), np.uint8), iterations=1)
+        cv2.imwrite("./debug/1.jpg", img_col)
+
+        # znalezienie poprawnych znaków na zdjęciu
+        signsCenters = []
+        properContours = []
+        for contour in contours:
+            xmin, xmax, ymin, ymax = coords(contour, 0)
+            if 50 < xmax-xmin < 300 and ymax-ymin > 50 and not (xmin < 200 and ymax > 1400):
+                signsCenters.append([(xmax+xmin)/2, (ymax+ymin)/2])
+                properContours.append(contour)
+
+        img_bg = eraseBackground(img_col, properContours, "white")
+        cv2.imwrite("./debug/2.jpg", img_bg)
+
+        # pogrupowanie znaków w karty
+        signsIdentity = KMeans(n_clusters=int(len(signsCenters)/8), random_state=0).fit(signsCenters).labels_
+        for k in range(int(len(signsCenters)/8)):
+            signsContours = [contour for j, contour in enumerate(properContours) if signsIdentity[j] == k]
+            signsList = []
+            for signContour in signsContours:
+                signPic, centerCoords = findMinRectangle(img_col, signContour, 0)
+                signThPic, c = findMinRectangle(img_th, signContour, 0)
+                cv2.imwrite("./signs/card" + str(k) + "sign" + str(len(signsList)) + ".jpg", signPic)
+                draw_number(img_arrows, str(len(signsList)), (int(centerCoords[0]), int(centerCoords[1])))
+                signsList.append({"pic": signPic, "th": signThPic, "contour": signContour, "coords": centerCoords})
+            cards.append({"pic": None, "signs": signsList})
+
+            # TODO wycięcie karty, niekoniecznie potrzebne, ale fajne do debugu
+
+    # calculate differences and pick best match
+    for i in range(len(cards)):
+        for j in range(i+1, len(cards)):
+            print("Cards ", i, j)
+            match_hu(img_arrows, cards[i], cards[j])
+
+    cv2.imwrite("./img_arrows" + str(number) + ".jpg", img_arrows)
+
+    for j, card in enumerate(cards):
+        for i, sign in enumerate(card["signs"]):
+            cv2.imwrite("./thresh/sign" + str(j) + str(i) + ".jpg", sign["th"])
+            hsv = cv2.cvtColor(sign["pic"], cv2.COLOR_RGB2HSV)
+            print("Card ", j, " sign ", i, "S: ", np.mean(hsv[:, :, 0]), "H: ", np.mean(hsv[:, :, 1]), "V: ", np.mean(hsv[:, :, 2]))
+
+    for j, card in enumerate(cards):
+        allcards.append(card)
+    return allcards
 
 
-# ax[0].imshow(cv2.cvtColor(img_col, cv2.COLOR_BGR2RGB))
-# ax[1].hist(img.flatten(),256,[0,256], color = 'r')
-# for i in range(2,4):
-#     ax[i].imshow(images[i-2],'gray')
+allcards = []
+files = ["04"]
 
-# for i, pic in enumerate(cards):
-#     ax[i+4].imshow(cv2.cvtColor(pic, cv2.COLOR_BGR2RGB))
-    
-# for i, pic in enumerate(signs):
-#     ax[i+1].imshow(cv2.cvtColor(pic["pic"], cv2.COLOR_BGR2RGB))
-#     ax[i+1].set_title(pic["card"])
+for filenumber, file in enumerate(files):
+    allcards = find_matches("./img/dobble"+ file +".jpg", allcards, filenumber)
+
+for j, card in enumerate(allcards):
+    if card["pic"] is not None:
+        cv2.imwrite("./cards/card" + str(j) + ".jpg", card["pic"])
+
+print(min, max)
