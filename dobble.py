@@ -2,6 +2,7 @@ import matplotlib.gridspec as gridspec
 import cv2
 import numpy as np
 from matplotlib import pyplot as plt
+import math
 from random import randint
 from sklearn.cluster import KMeans
 
@@ -21,7 +22,7 @@ def gamma_filter(img, aim):
     print("mean ", img_mean)
     gamma = 1
     if aim == "white_bg":
-        gamma = linear_adjustment(img_mean, 152, 167, 1.1, 1.5)
+        gamma = linear_adjustment(img_mean, 150, 167, 1.1, 1.5)
     if aim == "card":
         gamma = linear_adjustment(img_mean, 153, 240, 0.6, 1.5)
 
@@ -160,7 +161,7 @@ def find_matches(file, allcards, number):
 
                 cv2.imwrite("./cards/" + str(i) + ".jpg", card)
                 print("mean ", np.mean(cv2.cvtColor(card, cv2.COLOR_RGB2GRAY)))
-                cardRGBthresh = getRGBthresh(card, 120, 110, 140, i)
+                cardRGBthresh = getRGBthresh(card, 120, 110, 135, i)
                 cardRGBthresh = cv2.dilate(cardRGBthresh, np.ones((3, 3), np.uint8), iterations=1)
                 cv2.imwrite("./thresh/" + str(i) + ".jpg", cardRGBthresh)
 
@@ -193,12 +194,12 @@ def find_matches(file, allcards, number):
         print("białe tło")
         img_col = gamma_filter(img_col, "white_bg")
         print("mean after ", np.mean(cv2.cvtColor(img_col, cv2.COLOR_RGB2GRAY)))
-        img_th = getRGBthresh(img_col, 150, 130, 130, 1)
+        img_th = getRGBthresh(img_col, 135, 135, 165, 1)
         # img_th = cv2.dilate(img_th, np.ones((3, 3), np.uint8), iterations=1)
         cv2.imwrite("./th1.jpg", img_th)
         im2, contours, hierarchy = cv2.findContours(img_th, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
         # img_th = cv2.erode(img_th, np.ones((3, 3), np.uint8), iterations=1)
-        cv2.imwrite("./debug/1.jpg", img_col)
+        cv2.imwrite("./debug/1" + str(number) + ".jpg", img_col)
 
         # znalezienie poprawnych znaków na zdjęciu
         signsCenters = []
@@ -210,10 +211,10 @@ def find_matches(file, allcards, number):
                 properContours.append(contour)
 
         img_bg = eraseBackground(img_col, properContours, "white")
-        cv2.imwrite("./debug/2.jpg", img_bg)
+        cv2.imwrite("./debug/2" + str(number) + ".jpg", img_bg)
 
         # pogrupowanie znaków w karty
-        signsIdentity = KMeans(n_clusters=int(len(signsCenters)/8), random_state=0).fit(signsCenters).labels_
+        signsIdentity = KMeans(n_clusters=math.ceil(len(signsCenters)/8), random_state=0).fit(signsCenters).labels_
         for k in range(int(len(signsCenters)/8)):
             signsContours = [contour for j, contour in enumerate(properContours) if signsIdentity[j] == k]
             signsList = []
@@ -247,7 +248,23 @@ def find_matches(file, allcards, number):
 
 
 allcards = []
-files = ["04"]
+# zdjęcia do poprawki
+# 03 - karty za blisko krawędzi
+# 07 - karty za blisko krawędzi
+# 08 - za dużo duszków
+# 09 - za dużo duszków
+# 10 - nieznany błąd
+# 15 - nieznany błąd
+# 16 - mniej niebieskich znaków
+# 17 - zerowe rozpoznanie znaków
+# 18 - dużo niebieskich znaków
+# 20 - karty za blisko siebie
+# 21 - trochę za jasno
+# 26 - karty za blisko krawędzi
+
+
+# files = ["01", "02", "04", "05", "06", "08", "09", "11", "12", "13", "14", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "27"]
+files = ["13", "14", "20", "27"]
 
 for filenumber, file in enumerate(files):
     allcards = find_matches("./img/dobble"+ file +".jpg", allcards, filenumber)
