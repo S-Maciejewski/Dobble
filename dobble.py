@@ -47,7 +47,7 @@ def draw_arrow(img_arrows, p1, p2):
 
 # zapisywanie numeru symbolu na zdjęciu
 def draw_number(img_arrows, number, coordinates):
-    cv2.putText(img_arrows, number, coordinates, cv2.FONT_HERSHEY_SIMPLEX, 1.5, (255, 51, 153), 4)
+    # cv2.putText(img_arrows, number, coordinates, cv2.FONT_HERSHEY_SIMPLEX, 1.5, (255, 51, 153), 4)
     return img_arrows
 
 
@@ -249,22 +249,25 @@ def find_matches(file, allcards, number):
 
 allcards = []
 # zdjęcia do poprawki
-# 03 - karty za blisko krawędzi
-# 07 - karty za blisko krawędzi
-# 08 - za dużo duszków
-# 09 - za dużo duszków
-# 10 - nieznany błąd
-# 15 - nieznany błąd
-# 16 - mniej niebieskich znaków
-# 17 - zerowe rozpoznanie znaków
-# 18 - dużo niebieskich znaków
-# 20 - karty za blisko siebie
-# 21 - trochę za jasno
-# 26 - karty za blisko krawędzi
+# 03 - karty za blisko krawędzi .  
+# 07 - karty za blisko krawędzi .
+# 08 - za dużo duszków  .
+# 09 - za dużo duszków  .
+# 10 - nieznany błąd    -
+# 15 - nieznany błąd    .
+# 16 - mniej niebieskich znaków .
+# 17 - zerowe rozpoznanie znaków    .
+# 18 - dużo niebieskich znaków  .
+# 20 - karty za blisko siebie   
+# 21 - trochę za jasno  -
+# 26 - karty za blisko krawędzi .
 
 
 # files = ["01", "02", "04", "05", "06", "08", "09", "11", "12", "13", "14", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "27"]
-files = ["13", "14", "20", "27"]
+# files = ["01", "02", "03", "04", "12", "22", "23"] # easy
+# files = ["05", "06", "07", "08", "09", "18", "19", "21", "24", "26"]  # medium
+# files = ["10", "11", "13", "14", "15", "16", "17", "20", "25", "27"] # hard
+files = ["17"]
 
 for filenumber, file in enumerate(files):
     allcards = find_matches("./img/dobble"+ file +".jpg", allcards, filenumber)
