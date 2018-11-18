@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.15)  17 NOV 2018 19:05
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.15)  18 NOV 2018 17:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1702,44 +1702,307 @@ Package pdftex.def Info: 2.3/img_arrows0.jpg  used on input line 226.
 (pdftex.def)             Requested size: 401.49902pt x 301.12427pt.
 
 [10 <./2.3/img_arrows0.jpg>]
-LaTeX Font Info:    External font `plex10' loaded for size
-(Font)              <10> on input line 244.
-LaTeX Font Info:    External font `plex10' loaded for size
-(Font)              <7> on input line 244.
-LaTeX Font Info:    External font `plex10' loaded for size
-(Font)              <5> on input line 244.
+<easy/dobble01.jpg, id=148, 1606.0pt x 1204.5pt>
+File: easy/dobble01.jpg Graphic file (type jpg)
+<use easy/dobble01.jpg>
+Package pdftex.def Info: easy/dobble01.jpg  used on input line 235.
+(pdftex.def)             Requested size: 449.67694pt x 337.2577pt.
+<easy/img_arrows0.jpg, id=149, 1606.0pt x 1204.5pt>
+File: easy/img_arrows0.jpg Graphic file (type jpg)
+<use easy/img_arrows0.jpg>
+Package pdftex.def Info: easy/img_arrows0.jpg  used on input line 236.
+(pdftex.def)             Requested size: 449.67694pt x 337.2577pt.
+ [11]
+<easy/dobble02.jpg, id=153, 1606.0pt x 1204.5pt>
+File: easy/dobble02.jpg Graphic file (type jpg)
+<use easy/dobble02.jpg>
+Package pdftex.def Info: easy/dobble02.jpg  used on input line 238.
+(pdftex.def)             Requested size: 449.67694pt x 337.2577pt.
+<easy/img_arrows1.jpg, id=154, 1606.0pt x 1204.5pt>
+File: easy/img_arrows1.jpg Graphic file (type jpg)
+<use easy/img_arrows1.jpg>
+Package pdftex.def Info: easy/img_arrows1.jpg  used on input line 239.
+(pdftex.def)             Requested size: 449.67694pt x 337.2577pt.
+ [12 <./easy/dobble01.jpg> <./easy/img_arrows0.jpg>]
+<easy/dobble03.jpg, id=158, 1606.0pt x 1204.5pt>
+File: easy/dobble03.jpg Graphic file (type jpg)
+<use easy/dobble03.jpg>
+Package pdftex.def Info: easy/dobble03.jpg  used on input line 241.
+(pdftex.def)             Requested size: 449.67694pt x 337.2577pt.
+<easy/img_arrows2.jpg, id=159, 1606.0pt x 1204.5pt>
+File: easy/img_arrows2.jpg Graphic file (type jpg)
+<use easy/img_arrows2.jpg>
+Package pdftex.def Info: easy/img_arrows2.jpg  used on input line 242.
+(pdftex.def)             Requested size: 449.67694pt x 337.2577pt.
+ [13 <./easy/dobble02.jpg> <./easy/img_arrows1.jpg>]
+<easy/dobble04.jpg, id=164, 1606.0pt x 1204.5pt>
+File: easy/dobble04.jpg Graphic file (type jpg)
+<use easy/dobble04.jpg>
+Package pdftex.def Info: easy/dobble04.jpg  used on input line 244.
+(pdftex.def)             Requested size: 449.67694pt x 337.2577pt.
+<easy/img_arrows3.jpg, id=165, 1606.0pt x 1204.5pt>
+File: easy/img_arrows3.jpg Graphic file (type jpg)
+<use easy/img_arrows3.jpg>
+Package pdftex.def Info: easy/img_arrows3.jpg  used on input line 245.
+(pdftex.def)             Requested size: 449.67694pt x 337.2577pt.
+ [14 <./easy/dobble03.jpg> <./easy/img_arrows2.jpg>]
+<easy/dobble12.jpg, id=169, 1606.0pt x 1204.5pt>
+File: easy/dobble12.jpg Graphic file (type jpg)
+<use easy/dobble12.jpg>
+Package pdftex.def Info: easy/dobble12.jpg  used on input line 247.
+(pdftex.def)             Requested size: 449.67694pt x 337.2577pt.
+<easy/img_arrows4.jpg, id=170, 1606.0pt x 1204.5pt>
+File: easy/img_arrows4.jpg Graphic file (type jpg)
+<use easy/img_arrows4.jpg>
+Package pdftex.def Info: easy/img_arrows4.jpg  used on input line 248.
+(pdftex.def)             Requested size: 449.67694pt x 337.2577pt.
+ [15 <./easy/dobble04.jpg> <./easy/img_arrows3.jpg>]
+<easy/dobble22.jpg, id=174, 1606.0pt x 1204.5pt>
+File: easy/dobble22.jpg Graphic file (type jpg)
+<use easy/dobble22.jpg>
+Package pdftex.def Info: easy/dobble22.jpg  used on input line 250.
+(pdftex.def)             Requested size: 449.67694pt x 337.2577pt.
+<easy/img_arrows5.jpg, id=175, 1606.0pt x 1204.5pt>
+File: easy/img_arrows5.jpg Graphic file (type jpg)
+<use easy/img_arrows5.jpg>
+Package pdftex.def Info: easy/img_arrows5.jpg  used on input line 251.
+(pdftex.def)             Requested size: 449.67694pt x 337.2577pt.
+ [16 <./easy/dobble12.jpg> <./easy/img_arrows4.jpg>]
+<easy/dobble23.jpg, id=179, 1606.0pt x 1204.5pt>
+File: easy/dobble23.jpg Graphic file (type jpg)
+<use easy/dobble23.jpg>
+Package pdftex.def Info: easy/dobble23.jpg  used on input line 253.
+(pdftex.def)             Requested size: 449.67694pt x 337.2577pt.
+<easy/img_arrows6.jpg, id=180, 1606.0pt x 1204.5pt>
+File: easy/img_arrows6.jpg Graphic file (type jpg)
+<use easy/img_arrows6.jpg>
+Package pdftex.def Info: easy/img_arrows6.jpg  used on input line 254.
+(pdftex.def)             Requested size: 449.67694pt x 337.2577pt.
+ [17 <./easy/dobble22.jpg> <./easy/img_arrows5.jpg>] [18 <./easy/dobble23.jpg> 
+<./easy/img_arrows6.jpg>] [19]
+<medium/dobble05.jpg, id=191, 1606.0pt x 1204.5pt>
+File: medium/dobble05.jpg Graphic file (type jpg)
+<use medium/dobble05.jpg>
+Package pdftex.def Info: medium/dobble05.jpg  used on input line 261.
+(pdftex.def)             Requested size: 449.67694pt x 337.2577pt.
+<medium/img_arrows0.jpg, id=192, 1606.0pt x 1204.5pt>
+File: medium/img_arrows0.jpg Graphic file (type jpg)
+<use medium/img_arrows0.jpg>
+Package pdftex.def Info: medium/img_arrows0.jpg  used on input line 262.
+(pdftex.def)             Requested size: 449.67694pt x 337.2577pt.
+<medium/dobble06.jpg, id=193, 1606.0pt x 1204.5pt>
+File: medium/dobble06.jpg Graphic file (type jpg)
+<use medium/dobble06.jpg>
+Package pdftex.def Info: medium/dobble06.jpg  used on input line 264.
+(pdftex.def)             Requested size: 449.67694pt x 337.2577pt.
+<medium/img_arrows1.jpg, id=194, 1606.0pt x 1204.5pt>
+File: medium/img_arrows1.jpg Graphic file (type jpg)
+<use medium/img_arrows1.jpg>
+Package pdftex.def Info: medium/img_arrows1.jpg  used on input line 265.
+(pdftex.def)             Requested size: 449.67694pt x 337.2577pt.
+ [20 <./medium/dobble05.jpg> <./medium/img_arrows0.jpg>]
+<medium/dobble07.jpg, id=198, 1606.0pt x 1204.5pt>
+File: medium/dobble07.jpg Graphic file (type jpg)
+<use medium/dobble07.jpg>
+Package pdftex.def Info: medium/dobble07.jpg  used on input line 267.
+(pdftex.def)             Requested size: 449.67694pt x 337.2577pt.
+<medium/img_arrows2.jpg, id=199, 1606.0pt x 1204.5pt>
+File: medium/img_arrows2.jpg Graphic file (type jpg)
+<use medium/img_arrows2.jpg>
+Package pdftex.def Info: medium/img_arrows2.jpg  used on input line 268.
+(pdftex.def)             Requested size: 449.67694pt x 337.2577pt.
+ [21 <./medium/dobble06.jpg> <./medium/img_arrows1.jpg>]
+<medium/dobble08.jpg, id=203, 1606.0pt x 1204.5pt>
+File: medium/dobble08.jpg Graphic file (type jpg)
+<use medium/dobble08.jpg>
+Package pdftex.def Info: medium/dobble08.jpg  used on input line 270.
+(pdftex.def)             Requested size: 449.67694pt x 337.2577pt.
+<medium/img_arrows3.jpg, id=204, 1606.0pt x 1204.5pt>
+File: medium/img_arrows3.jpg Graphic file (type jpg)
+<use medium/img_arrows3.jpg>
+Package pdftex.def Info: medium/img_arrows3.jpg  used on input line 271.
+(pdftex.def)             Requested size: 449.67694pt x 337.2577pt.
+ [22 <./medium/dobble07.jpg> <./medium/img_arrows2.jpg>]
+<medium/dobble09.jpg, id=208, 1606.0pt x 1204.5pt>
+File: medium/dobble09.jpg Graphic file (type jpg)
+<use medium/dobble09.jpg>
+Package pdftex.def Info: medium/dobble09.jpg  used on input line 273.
+(pdftex.def)             Requested size: 449.67694pt x 337.2577pt.
+<medium/img_arrows4.jpg, id=209, 1606.0pt x 1204.5pt>
+File: medium/img_arrows4.jpg Graphic file (type jpg)
+<use medium/img_arrows4.jpg>
+Package pdftex.def Info: medium/img_arrows4.jpg  used on input line 274.
+(pdftex.def)             Requested size: 449.67694pt x 337.2577pt.
+ [23 <./medium/dobble08.jpg> <./medium/img_arrows3.jpg>]
+<medium/dobble18.jpg, id=213, 1606.0pt x 1204.5pt>
+File: medium/dobble18.jpg Graphic file (type jpg)
+<use medium/dobble18.jpg>
+Package pdftex.def Info: medium/dobble18.jpg  used on input line 276.
+(pdftex.def)             Requested size: 449.67694pt x 337.2577pt.
+<medium/img_arrows5.jpg, id=214, 1606.0pt x 1204.5pt>
+File: medium/img_arrows5.jpg Graphic file (type jpg)
+<use medium/img_arrows5.jpg>
+Package pdftex.def Info: medium/img_arrows5.jpg  used on input line 277.
+(pdftex.def)             Requested size: 449.67694pt x 337.2577pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 290--291
+[24 <./medium/dobble09.jpg> <./medium/img_arrows4.jpg>]
+<medium/dobble19.jpg, id=218, 1606.0pt x 1204.5pt>
+File: medium/dobble19.jpg Graphic file (type jpg)
+<use medium/dobble19.jpg>
+Package pdftex.def Info: medium/dobble19.jpg  used on input line 279.
+(pdftex.def)             Requested size: 449.67694pt x 337.2577pt.
+<medium/img_arrows6.jpg, id=219, 1606.0pt x 1204.5pt>
+File: medium/img_arrows6.jpg Graphic file (type jpg)
+<use medium/img_arrows6.jpg>
+Package pdftex.def Info: medium/img_arrows6.jpg  used on input line 280.
+(pdftex.def)             Requested size: 449.67694pt x 337.2577pt.
+ [25 <./medium/dobble18.jpg> <./medium/img_arrows5.jpg>]
+<medium/dobble21.jpg, id=224, 1606.0pt x 1204.5pt>
+File: medium/dobble21.jpg Graphic file (type jpg)
+<use medium/dobble21.jpg>
+Package pdftex.def Info: medium/dobble21.jpg  used on input line 282.
+(pdftex.def)             Requested size: 449.67694pt x 337.2577pt.
+<medium/img_arrows7.jpg, id=225, 1606.0pt x 1204.5pt>
+File: medium/img_arrows7.jpg Graphic file (type jpg)
+<use medium/img_arrows7.jpg>
+Package pdftex.def Info: medium/img_arrows7.jpg  used on input line 283.
+(pdftex.def)             Requested size: 449.67694pt x 337.2577pt.
+ [26 <./medium/dobble19.jpg> <./medium/img_arrows6.jpg>]
+<medium/dobble24.jpg, id=229, 1606.0pt x 1204.5pt>
+File: medium/dobble24.jpg Graphic file (type jpg)
+<use medium/dobble24.jpg>
+Package pdftex.def Info: medium/dobble24.jpg  used on input line 285.
+(pdftex.def)             Requested size: 449.67694pt x 337.2577pt.
+<medium/img_arrows8.jpg, id=230, 1606.0pt x 1204.5pt>
+File: medium/img_arrows8.jpg Graphic file (type jpg)
+<use medium/img_arrows8.jpg>
+Package pdftex.def Info: medium/img_arrows8.jpg  used on input line 286.
+(pdftex.def)             Requested size: 449.67694pt x 337.2577pt.
+ [27 <./medium/dobble21.jpg> <./medium/img_arrows7.jpg>]
+<medium/dobble26.jpg, id=234, 1606.0pt x 1204.5pt>
+File: medium/dobble26.jpg Graphic file (type jpg)
+<use medium/dobble26.jpg>
+Package pdftex.def Info: medium/dobble26.jpg  used on input line 288.
+(pdftex.def)             Requested size: 449.67694pt x 337.2577pt.
+<medium/img_arrows9.jpg, id=235, 1606.0pt x 1204.5pt>
+File: medium/img_arrows9.jpg Graphic file (type jpg)
+<use medium/img_arrows9.jpg>
+Package pdftex.def Info: medium/img_arrows9.jpg  used on input line 289.
+(pdftex.def)             Requested size: 449.67694pt x 337.2577pt.
+ [28 <./medium/dobble24.jpg> <./medium/img_arrows8.jpg>] [29 <./medium/dobble26
+.jpg> <./medium/img_arrows9.jpg>] [30]
+<hard/dobble11.jpg, id=245, 1606.0pt x 1204.5pt>
+File: hard/dobble11.jpg Graphic file (type jpg)
+<use hard/dobble11.jpg>
+Package pdftex.def Info: hard/dobble11.jpg  used on input line 297.
+(pdftex.def)             Requested size: 449.67694pt x 337.2577pt.
+<hard/img_arrows11.jpg, id=246, 1606.0pt x 1204.5pt>
+File: hard/img_arrows11.jpg Graphic file (type jpg)
+<use hard/img_arrows11.jpg>
+Package pdftex.def Info: hard/img_arrows11.jpg  used on input line 298.
+(pdftex.def)             Requested size: 449.67694pt x 337.2577pt.
+<hard/dobble13.jpg, id=247, 1606.0pt x 1204.5pt>
+File: hard/dobble13.jpg Graphic file (type jpg)
+<use hard/dobble13.jpg>
+Package pdftex.def Info: hard/dobble13.jpg  used on input line 300.
+(pdftex.def)             Requested size: 449.67694pt x 337.2577pt.
+<hard/img_arrows13.jpg, id=248, 1606.0pt x 1204.5pt>
+File: hard/img_arrows13.jpg Graphic file (type jpg)
+<use hard/img_arrows13.jpg>
+Package pdftex.def Info: hard/img_arrows13.jpg  used on input line 301.
+(pdftex.def)             Requested size: 449.67694pt x 337.2577pt.
+ [31 <./hard/dobble11.jpg> <./hard/img_arrows11.jpg>]
+<hard/dobble14.jpg, id=253, 1606.0pt x 1204.5pt>
+File: hard/dobble14.jpg Graphic file (type jpg)
+<use hard/dobble14.jpg>
+Package pdftex.def Info: hard/dobble14.jpg  used on input line 303.
+(pdftex.def)             Requested size: 449.67694pt x 337.2577pt.
+<hard/img_arrows14.jpg, id=254, 1606.0pt x 1204.5pt>
+File: hard/img_arrows14.jpg Graphic file (type jpg)
+<use hard/img_arrows14.jpg>
+Package pdftex.def Info: hard/img_arrows14.jpg  used on input line 304.
+(pdftex.def)             Requested size: 449.67694pt x 337.2577pt.
 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 292--293
-
- []
-
-[11] (./sprawozdanie.aux) ) 
+[32 <./hard/dobble13.jpg> <./hard/img_arrows13.jpg>]
+<hard/dobble16.jpg, id=258, 1606.0pt x 1204.5pt>
+File: hard/dobble16.jpg Graphic file (type jpg)
+<use hard/dobble16.jpg>
+Package pdftex.def Info: hard/dobble16.jpg  used on input line 306.
+(pdftex.def)             Requested size: 449.67694pt x 337.2577pt.
+<hard/img_arrows16.jpg, id=259, 1606.0pt x 1204.5pt>
+File: hard/img_arrows16.jpg Graphic file (type jpg)
+<use hard/img_arrows16.jpg>
+Package pdftex.def Info: hard/img_arrows16.jpg  used on input line 307.
+(pdftex.def)             Requested size: 449.67694pt x 337.2577pt.
+ [33 <./hard/dobble14.jpg> <./hard/img_arrows14.jpg>]
+<hard/dobble20.jpg, id=263, 1606.0pt x 1204.5pt>
+File: hard/dobble20.jpg Graphic file (type jpg)
+<use hard/dobble20.jpg>
+Package pdftex.def Info: hard/dobble20.jpg  used on input line 309.
+(pdftex.def)             Requested size: 449.67694pt x 337.2577pt.
+<hard/img_arrows20.jpg, id=264, 1606.0pt x 1204.5pt>
+File: hard/img_arrows20.jpg Graphic file (type jpg)
+<use hard/img_arrows20.jpg>
+Package pdftex.def Info: hard/img_arrows20.jpg  used on input line 310.
+(pdftex.def)             Requested size: 449.67694pt x 337.2577pt.
+ [34 <./hard/dobble16.jpg> <./hard/img_arrows16.jpg>]
+<hard/dobble25.jpg, id=268, 1606.0pt x 1204.5pt>
+File: hard/dobble25.jpg Graphic file (type jpg)
+<use hard/dobble25.jpg>
+Package pdftex.def Info: hard/dobble25.jpg  used on input line 312.
+(pdftex.def)             Requested size: 449.67694pt x 337.2577pt.
+<hard/img_arrows25.jpg, id=269, 1606.0pt x 1204.5pt>
+File: hard/img_arrows25.jpg Graphic file (type jpg)
+<use hard/img_arrows25.jpg>
+Package pdftex.def Info: hard/img_arrows25.jpg  used on input line 313.
+(pdftex.def)             Requested size: 449.67694pt x 337.2577pt.
+[35 <./hard/dobble20.jpg> <./hard/img_arrows20.jpg>]
+<hard/dobble27.jpg, id=273, 1606.0pt x 1204.5pt>
+File: hard/dobble27.jpg Graphic file (type jpg)
+<use hard/dobble27.jpg>
+Package pdftex.def Info: hard/dobble27.jpg  used on input line 315.
+(pdftex.def)             Requested size: 449.67694pt x 337.2577pt.
+<hard/img_arrows27.jpg, id=274, 1606.0pt x 1204.5pt>
+File: hard/img_arrows27.jpg Graphic file (type jpg)
+<use hard/img_arrows27.jpg>
+Package pdftex.def Info: hard/img_arrows27.jpg  used on input line 316.
+(pdftex.def)             Requested size: 449.67694pt x 337.2577pt.
+ [36 <./hard/dobble25.jpg> <./hard/img_arrows25.jpg>] [37 <./hard/dobble27.jpg>
+ <./hard/img_arrows27.jpg>]
+<hard/dobble15.jpg, id=282, 1606.0pt x 1204.5pt>
+File: hard/dobble15.jpg Graphic file (type jpg)
+<use hard/dobble15.jpg>
+Package pdftex.def Info: hard/dobble15.jpg  used on input line 323.
+(pdftex.def)             Requested size: 224.83847pt x 168.62885pt.
+<hard/dobble17.jpg, id=283, 1606.0pt x 1204.5pt>
+File: hard/dobble17.jpg Graphic file (type jpg)
+<use hard/dobble17.jpg>
+Package pdftex.def Info: hard/dobble17.jpg  used on input line 324.
+(pdftex.def)             Requested size: 224.83847pt x 168.62885pt.
+<hard/img_arrows17.jpg, id=284, 1606.0pt x 1204.5pt>
+File: hard/img_arrows17.jpg Graphic file (type jpg)
+<use hard/img_arrows17.jpg>
+Package pdftex.def Info: hard/img_arrows17.jpg  used on input line 328.
+(pdftex.def)             Requested size: 449.67694pt x 337.2577pt.
+[38 <./hard/dobble15.jpg> <./hard/dobble17.jpg> <./hard/img_arrows17.jpg>]
+(./sprawozdanie.aux) ) 
 Here is how much of TeX's memory you used:
- 24442 strings out of 492982
- 612181 string characters out of 6134895
- 775442 words of memory out of 5000000
- 27502 multiletter control sequences out of 15000+600000
- 13283 words of font info for 38 fonts, out of 8000000 for 9000
+ 24669 strings out of 492982
+ 617500 string characters out of 6134895
+ 772442 words of memory out of 5000000
+ 27694 multiletter control sequences out of 15000+600000
+ 9824 words of font info for 29 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 62i,8n,96p,1225b,609s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips/pl/pl
-ms.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/pl/plrm.enc}{/usr/share/t
-exlive/texmf-dist/fonts/enc/dvips/pl/plmi.enc}</usr/share/texlive/texmf-dist/fo
-nts/type1/public/pl/plbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
-c/pl/plbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/pl/plmi10.pfb
-></usr/share/texlive/texmf-dist/fonts/type1/public/pl/plr10.pfb></usr/share/tex
-live/texmf-dist/fonts/type1/public/pl/plr12.pfb></usr/share/texlive/texmf-dist/
-fonts/type1/public/pl/plr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
-ic/pl/plsy10.pfb>
-Output written on sprawozdanie.pdf (11 pages, 5222360 bytes).
+ 62i,7n,96p,1225b,609s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/pl/plrm.en
+c}</usr/share/texlive/texmf-dist/fonts/type1/public/pl/plbx12.pfb></usr/share/t
+exlive/texmf-dist/fonts/type1/public/pl/plr10.pfb></usr/share/texlive/texmf-dis
+t/fonts/type1/public/pl/plr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
+blic/pl/plr17.pfb>
+Output written on sprawozdanie.pdf (38 pages, 34838457 bytes).
 PDF statistics:
- 181 PDF objects out of 1000 (max. 8388607)
- 53 compressed objects within 1 object stream
+ 307 PDF objects out of 1000 (max. 8388607)
+ 103 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 548 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 803 words of extra memory for PDF output out of 10000 (max. 10000000)
 

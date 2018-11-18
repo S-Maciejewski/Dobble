@@ -226,71 +226,106 @@ Mimo, że nie mamy zapisanych obrazów kart jako takich, to na samych zbiorach i
 \includegraphics[scale=0.25]{2.3/img_arrows0.jpg}
 \end{center}
 Jak widać, dokładność porównania to w tym przypadku 80\%, mamy dwa błędne dopasowania - wyżej można zauważyć, że wśród znalezionych symboli był tylko jeden z dwóch kwiatków potrzebnych do dopasowania górnych kart, dodatkowo nie udało się też dopasować okularów będących na kartach o dużej różnicy naświetlenia.
-
-
-
-
-
-
-
-
-
-
-
 \newpage
-\section*{Wnioski}
-\forceindent Porównanie zapisanych widm z tablicami spektralnymi pokazuje, że w lampach A-C znajdują się następujące pierwiastki chemiczne :
+\section{Wyniki}
+Poniżej przedstawiamy wyniki pracy algorytmu dla przygotowanej przez nas próbki zdjęć z podziałem na przypadki łatwe, średnie i trudne. Poniżej, na każdej ze stron zaprezentowany jest obraz wejściowy i wynik.
+
+\subsection{Przypadki łatwe}
 \begin{center}
-\begin{tabular}{|c|c|c|c|c|c|}
-\multicolumn{2}{c}{Lampa A} & \multicolumn{2}{c}{Lampa B} & \multicolumn{2}{c}{Lampa C}\\
-\hline
-$\lambda (nm)$ & Natężenie & $\lambda (nm)$ & Natężenie & $\lambda (nm)$ & Natężenie\\
-\hline
-485,3 & b. małe & 387,8 & duże & 585,8 & b. duże\\
-\hline
-655,9 & duże & 446,5 & średnie & 594,3 & małe \\
-\hline
-750,3 & b. duże & 500,7 & duże & 609,3 & średnie \\
-\hline
-763,2 & średnie & 589,0 & b. duże & 614,3 & duże \\
-\hline
-810,9 & średnie & 667,3 & b. duże & 625,7 & małe \\
-\hline
-814,5 & małe & 706,2 & b. duże & 633,2 & małe \\
-\hline
-&& 728,2 & średnie & 639,9 & b. duże \\
-\hline
-&&&& 650,2 & średnie \\
-\hline
-&&&& 655,9 & małe \\
-\hline
-&&&& 667,3 & małe \\
-\hline
-&&&& 692,3 & b. małe \\
-\hline
-&&&& 703,3 & małe \\
-\hline
-
-\end{tabular}
+\includegraphics[scale=0.28]{easy/dobble01.jpg}
+\includegraphics[scale=0.28]{easy/img_arrows0.jpg}\\
+3 dopasowania, dokładność 100\%
+\includegraphics[scale=0.28]{easy/dobble02.jpg}
+\includegraphics[scale=0.28]{easy/img_arrows1.jpg}\\
+6 dopasowań, dokładność 100\%
+\includegraphics[scale=0.28]{easy/dobble03.jpg}
+\includegraphics[scale=0.28]{easy/img_arrows2.jpg}\\
+10 dopasowań, dokładność 80\%
+\includegraphics[scale=0.28]{easy/dobble04.jpg}
+\includegraphics[scale=0.28]{easy/img_arrows3.jpg}\\
+15 dopasowań, dokładność 100\%
+\includegraphics[scale=0.28]{easy/dobble12.jpg}
+\includegraphics[scale=0.28]{easy/img_arrows4.jpg}\\
+6 dopasowań, dokładność 67\%
+\includegraphics[scale=0.28]{easy/dobble22.jpg}
+\includegraphics[scale=0.28]{easy/img_arrows5.jpg}\\
+3 dopasowania, dokładność 100\%
+\includegraphics[scale=0.28]{easy/dobble23.jpg}
+\includegraphics[scale=0.28]{easy/img_arrows6.jpg}\\
+15 dopasowań, dokładność 67\%
 \end{center}
+\subsection{Przypadki średnie}
+W tej sekcji znajdują się grupy zdjęć w perspektywie. W celu łatwiejszego porównywania wyników dla różnych kątów nachylenia, również zdjęcia pod kątem prostym dla danych zestawów kart znajdują się w tej sekcji, mimo iż stanowią raczej łatwe przypadki. Pojawiają się też tutaj zdjęcia na kolorowym tle - korkowej tablicy, lakierowanym drewnianym biurku ze sztucznym oświetleniem, granatowej tkaninie, a nawet na czarno-szarej koszuli w drobną kratę.
+\newpage
 \begin{center}
-\begin{tabular}{|c|c|}
-\hline
-\textbf{Lampa} & \textbf{Pierwiastek} \\
-\hline
-A & Argon \\
-\hline
-B & Hel \\
-\hline
-C & Neon \\
-\hline
-\end{tabular}
+\includegraphics[scale=0.28]{medium/dobble05.jpg}
+\includegraphics[scale=0.28]{medium/img_arrows0.jpg}\\
+3 dopasowania, dokładność 67\%
+\includegraphics[scale=0.28]{medium/dobble06.jpg}
+\includegraphics[scale=0.28]{medium/img_arrows1.jpg}\\
+3 dopasowania, dokładność 67\%
+\includegraphics[scale=0.28]{medium/dobble07.jpg}
+\includegraphics[scale=0.28]{medium/img_arrows2.jpg}\\
+3 dopasowania, dokładność 67\%
+\includegraphics[scale=0.28]{medium/dobble08.jpg}
+\includegraphics[scale=0.28]{medium/img_arrows3.jpg}\\
+10 dopasowań, dokładność 90\%
+\includegraphics[scale=0.28]{medium/dobble09.jpg}
+\includegraphics[scale=0.28]{medium/img_arrows4.jpg}\\
+10 dopasowań, dokładność 70\%
+\includegraphics[scale=0.28]{medium/dobble18.jpg}
+\includegraphics[scale=0.28]{medium/img_arrows5.jpg}\\
+10 dopasowań, dokładność 60\%
+\includegraphics[scale=0.28]{medium/dobble19.jpg}
+\includegraphics[scale=0.28]{medium/img_arrows6.jpg}\\
+15 dopasowań, dokładność 67\%
+\includegraphics[scale=0.28]{medium/dobble21.jpg}
+\includegraphics[scale=0.28]{medium/img_arrows7.jpg}\\
+3 dopasowania, dokładność 67\%
+\includegraphics[scale=0.28]{medium/dobble24.jpg}
+\includegraphics[scale=0.28]{medium/img_arrows8.jpg}\\
+3 dopasowania, dokładność 100\%
+\includegraphics[scale=0.28]{medium/dobble26.jpg}
+\includegraphics[scale=0.28]{medium/img_arrows9.jpg}\\
+3 dopasowania, dokładność 67\%
 \end{center}
 
-\forceindent Jak widać na powyższych wykresach, maksymalne pasma spektralne dla lampy 1. położone są między $ 542,3 - 545,5 nm$ i $612,1 nm$, a dla lampy 2. w $459,0 nm$. Dla lampy 3. położenie pasm jest różne w zależności od koloru, zaś dla lampy 4. pasmo jest identyczne dla każdego natężenia prądu, zmienia się jedynie intensywność świecenia.\\
-
-\forceindent Dodatkowo, po porównaniu widama lampy 1. z tablicą spektralną rtęci, można zauważyć, że intensywności dla odpowiednich długości fali, przedstawione w tabeli, bardzo dobrze pokrywają się z wykresem, co pokazuje, że pierwiastkiem emitującym światło w świetlówkach kompaktowych jest rtęć. \\
-
-\forceindent Przeprowadzone doświadczenie unaocznia różnicę między różnymi rodzajami światła. Różnice te wynikają z tego, że różne żarówki wykonane są z różnych pierwiastków, co widać szczególnie w przypadku lamp A, B i C. Różnica w widmach wynika z różnic w długości fali światła wpadającego do spektrometru, co gołym okiem widać na przykładzie lampy 3., której różne barwy światła różniły się znacząco swoimi widmami. Doświadczenie wykorzystujące lampę 4. ukazuje, że intensywność świecenia, jak można było przewidzieć, nie wpłynie w sposób zauważalny na zakres pasma światła, zmieni się jedynie intensywność światła.
-
+\subsection{Przypadki trudne}
+W tej sekcji umieściliśmy najtrudniejsze do przeanalizowania zdjęcia. Białe tło (szczególnie jeśli jest nieregularne) jest wyjątkowo trudnym przypadkiem bo uniemożliwia prawidłowe wykrywanie kart na początku przetwarzania. Podobna sytuacja występuje w zdjęciach z kolorowym światłem - tam z kolei przesłonięcie źródła światła sprawiło, że zdjęcia były bardzo ciemne, co w niektórych przypadkach wręcz uniemożliwiało wykrycie czegokolwiek.
+\newpage
+\begin{center}
+\includegraphics[scale=0.28]{hard/dobble11.jpg}
+\includegraphics[scale=0.28]{hard/img_arrows11.jpg}\\
+3 dopasowania, dokładność 100\%
+\includegraphics[scale=0.28]{hard/dobble13.jpg}
+\includegraphics[scale=0.28]{hard/img_arrows13.jpg}\\
+3 dopasowania, dokładność 67\%
+\includegraphics[scale=0.28]{hard/dobble14.jpg}
+\includegraphics[scale=0.28]{hard/img_arrows14.jpg}\\
+10 dopasowań, dokładność 70\%
+\includegraphics[scale=0.28]{hard/dobble16.jpg}
+\includegraphics[scale=0.28]{hard/img_arrows16.jpg}\\
+3 dopasowania, dokładność 67\%
+\includegraphics[scale=0.28]{hard/dobble20.jpg}
+\includegraphics[scale=0.28]{hard/img_arrows20.jpg}\\
+6 (z 10) dopasowań, dokładność 83\% (50\%)
+\includegraphics[scale=0.28]{hard/dobble25.jpg}
+\includegraphics[scale=0.28]{hard/img_arrows25.jpg}\\
+6 (z 10) dopasowań, dokładność 67\% (40\%)
+\includegraphics[scale=0.28]{hard/dobble27.jpg}
+\includegraphics[scale=0.28]{hard/img_arrows27.jpg}\\
+6 (z 10) dopasowań, dokładność 83\% (50\%)
+\end{center}
+\newpage
+\subsection{Nieudane przypadki}
+Z dwoma zdjęciami nas program miał szczególne trudności:
+\begin{center}
+\includegraphics[scale=0.14]{hard/dobble15.jpg}
+\includegraphics[scale=0.14]{hard/dobble17.jpg}
+\end{center}
+W tych przypadkach nasz algorytm wykrywania kart i symboli nie poradził sobie ze słabym oświetleniem - być może za sprawą parametrów stosowanych przez nas filtrów (szczególnie threshold i korekcji gamma). Dla przykładu z żółtym światłem udało się nawet odnaleźć jakieś symbole, jednak nie były one prawidłowo połączone:
+\begin{center}
+\includegraphics[scale=0.28]{hard/img_arrows17.jpg}
+\end{center}
+Mogłoby się wydawać, że w tym przypadku zawiodła funkcja porównująca karty, może porównywanie po kolorze, jednak na zdjęciu widać, że strzałki nie trafiają w środki symboli, co znaczy, że na poprzednim etapie przetwarzania (wycinaniu znaków z kart) załadowano błędne symbole. Taki błąd jest najpewniej spowodowany niskim kontrastem między wieloma symbolami a żółtym tłem karty.
 \end{document}
