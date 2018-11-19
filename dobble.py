@@ -50,6 +50,9 @@ def draw_number(img_arrows, number, coordinates):
     # cv2.putText(img_arrows, number, coordinates, cv2.FONT_HERSHEY_SIMPLEX, 1.5, (255, 51, 153), 4)
     return img_arrows
 
+def draw_word(img_arrows, text, coordinates):
+    cv2.putText(img_arrows, text, coordinates, cv2.FONT_HERSHEY_SIMPLEX, 1.5, (255, 51, 153), 4)
+    return img_arrows
 
 def hsv_values(img):
     img_in_hsv = cv2.cvtColor(img, cv2.COLOR_RGB2HSV)
@@ -132,6 +135,33 @@ def eraseBackground(img, contourslist, mode):
     if mode == "white":
         result = cv2.add(result, stencil_inv)
     return result
+
+def mark_keys(img_arrows, card):
+    keys=["klucz.jpg", "pajak.jpg", "zarowka.jpg"] 
+    for key in keys:
+        key_img = cv2.imread(key)
+        RGBthresh = getRGBthresh(key_img, 120, 110, 135, 0)
+        RGBthresh = cv2.dilate(RGBthresh, np.ones((3, 3), np.uint8), iterations=1)
+        key_contour = cv2.findContours(RGBthresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+        # key_sign = {"pic": key_img, "contour": key_contour}
+        for b, sign in enumerate(card['signs']):
+            hu_moment = cv2.matchShapes(key_contour, sign["contour"], 1, 0.0)
+            color_match = compare_hsv_values(key_img, sign["pic"])
+            ratio_match = compare_ratios(key_img, sign["pic"])
+            if hu_moment < 0.4 and ratio_match < 0.30:
+                great_matches.append((key_sign, sign, 0, 0, hu_moment))
+
+        if len(great_matches) != 0:
+            best_match = great_matches[0]
+            min_color_diff = 100000
+            for match in great_matches:
+                color_diff = compare_hsv_values(key_img, match[1]["pic"]) + match[4]*1000
+                if color_diff < min_color_diff:
+                    min_color_diff = color_diff
+                    best_match = match
+        p = best_match[1]['coords']
+        img_arrows = draw_word(img_arrows, key, p)
+        return img_arrows
 
 
 def find_matches(file, allcards, number):
@@ -233,6 +263,7 @@ def find_matches(file, allcards, number):
         for j in range(i+1, len(cards)):
             print("Cards ", i, j)
             match_hu(img_arrows, cards[i], cards[j])
+        mark_keys(img_arrows, cards[i]) #TODO problem z konturem w matchShapes
 
     cv2.imwrite("./img_arrows" + str(number) + ".jpg", img_arrows)
 
@@ -266,14 +297,17 @@ allcards = []
 # files = ["01", "02", "04", "05", "06", "08", "09", "11", "12", "13", "14", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "27"]
 # files = ["01", "02", "03", "04", "12", "22", "23"] # easy
 # files = ["05", "06", "07", "08", "09", "18", "19", "21", "24", "26"]  # medium
-# files = ["10", "11", "13", "14", "15", "16", "17", "20", "25", "27"] # hard
-files = ["17"]
+# files = ["11", "13", "14", "16", 20", "25", "27"] # hard
+# files = ["10", "15", "17"] # fail
+files = ["02"]
 
 for filenumber, file in enumerate(files):
     allcards = find_matches("./img/dobble"+ file +".jpg", allcards, filenumber)
 
+
 for j, card in enumerate(allcards):
     if card["pic"] is not None:
         cv2.imwrite("./cards/card" + str(j) + ".jpg", card["pic"])
+
 
 print(min, max)
