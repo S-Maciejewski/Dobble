@@ -65,7 +65,7 @@ Najpierw zajmujemy się wycięciem wszystkich 6 kart i wybieleniem tła (w celu 
 \includegraphics[scale=0.25]{2.1/card5.jpg}
 \end{center}
 Każda karta jest teraz indywidualnie rozjaśniana lub przyciemniana za pomocą korekcji gamma, żeby zniewlować różnice w oświetleniu wynikające np. z różnej odległości od źródła światła (w przypadku sztucznego oświetlenia).
-Następnie do każdej karty stosujemy threshold RGB, żeby następnie móc odnaleźć kontury symboli. Nasza metoda thresholdu RGB wywołuje threshold na każdym z kanałów z osobna - dla pierwszej karty jego zastosowanie pozwala nam na uzyskanie 3 obrazów:
+Następnie dla każdej karty stosujemy threshold RGB w celu wykrycia konturów (zarysów) symboli. Nasza metoda thresholdu RGB wywołuje threshold na każdym z kanałów z osobna - dla drugiej karty jego zastosowanie pozwala nam na uzyskanie 3 obrazów:
 \begin{center}
 \includegraphics[scale=0.25]{2.1/red1.jpg}
 \includegraphics[scale=0.25]{2.1/green1.jpg}
