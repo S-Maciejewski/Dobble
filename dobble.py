@@ -218,7 +218,7 @@ def find_matches(file, allcards, number):
                         coordx = centerCoords[1] + cxmin
                         coordy = centerCoords[0] + cymin
                         cv2.imwrite("./signs/card" + str(i) + "sign" + str(len(signs)) + ".jpg", signPic)
-                        draw_number(img_arrows, str(len(signs)), (int(coordy), int(coordx)))
+                        # draw_number(img_arrows, str(len(signs)), (int(coordy), int(coordx)))
 
                         signs.append({"pic": signPic, "th": signThPic, "contour": signContour, "coords": [coordy, coordx]})
 
@@ -258,7 +258,7 @@ def find_matches(file, allcards, number):
                 signPic, centerCoords = findMinRectangle(img_col, signContour, 0)
                 signThPic, c = findMinRectangle(img_th, signContour, 0)
                 cv2.imwrite("./signs/card" + str(k) + "sign" + str(len(signsList)) + ".jpg", signPic)
-                draw_number(img_arrows, str(len(signsList)), (int(centerCoords[0]), int(centerCoords[1])))
+                # draw_number(img_arrows, str(len(signsList)), (int(centerCoords[0]), int(centerCoords[1])))
                 signsList.append({"pic": signPic, "th": signThPic, "contour": signContour, "coords": centerCoords})
             cards.append({"pic": None, "signs": signsList})
 
@@ -303,7 +303,7 @@ allcards = []
 # files = ["01", "02", "03", "04", "12", "22", "23"] # easy
 # files = ["05", "06", "07", "08", "09", "18", "19", "21", "24", "26"]  # medium
 # files = ["11", "13", "14", "16", "20", "25", "27"] # hard
-files = ["08", "09"] # fail
+files = ["17"] # fail
 
 
 for filenumber, file in enumerate(files):
