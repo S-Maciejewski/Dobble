@@ -32,8 +32,15 @@ liście wyciętych kart. Ten fragment programu jest kluczowy dla końcowego rezu
 W skrócie: proces wycinania polega na znalezieniu krawędzi po zastosowaniu filtru threshold dla zdjęć z ciemnym tłem lub specjalnego filtru threshold po 3 kanałach R, G, B (który to filtr pozwala uzyskać wyjątkowo dokładne obrysy, ponieważ analizuje każdy kanał z osobna, następnie złączając je w jeden obraz) dla zdjęć z jasnym (białym) tłem. W przypadku ciemnego tła symbole są przyporządkowywane do kart dzięki algorytmowi wykrywania konturów, który zwraca drzewiastą sktrukturę. Na jej podstawie można rozpoznać czy symbol zawiera się w karcie. Ponowne zastosowanie filtru threshold, tym razem w wersji RGB na jednej wyciętej karcie, umożiwia dokładne rozpoznawanie symboli po powtórnym wywołaniu algorytmu wyszukiwania konturów. W przypadku zdjęć z jasnym tłem algorytm wykrywania konturów zwraca same symbole, które następnie są grupowane w karty na podstawie ich wzajemnych odległości na zdjęciu - w ten sposób mamy możliwość wykrycia kart mimo niekontrastowego tła zdjęcia. Tak rozpoznane symbole są zapisywane jako małe wycinki zdjęcia (najmniejsze prostokąty, w których mieści się symbol) w tablicy symboli dla danej karty. \\
 
 Kiedy już uda się wyciąć karty i symbole, przychodzi czas na porównywanie ich ze sobą - w tym celu dla każdej pary kart (co można, nie zmniejszając ogólności rozumowania, sprowadzić do przypadku porównywania każdej karty poza najbliższą środkowi zdjęcia z tą najbardziej środkową kartą) wywoływana jest funkcja porównująca, której zadaniem jest zaznaczenie na oryginalnym zdjęciu pary symboli, które odpowiadają sobie na tej parze kart. 
+Działanie funkcji porównującej można rozłożyć na kilka etapów - na początek przechodzi ona po wszystkich parach symboli i oblicza różnice momentów hu, wartości kolorów (w HSV) i stosunku długości boków (najmniejszego prostokąta zawierającego cały symbol) dla każdej pary. Jeśli różnica momentów i stosunku długości jest w ustalonym przedziale akceptowalnych dopasowań, to taka para symboli jest zapisywana jako potencjalnie prawidłowe dopasowanie. Następnie dla wszystkich takich dopasowań porównywane są różnice kolorów symboli i te, których różnica kolorów jest najmniejsza są uznawane za prawidłowe dopasowanie. Między środkami tych symboli jest rysowana strzałka na głownym zdjęciu, co ma oznaczać, że te dwa symbole są identyczne z dokładnością do rozmiaru i rotacji.\\
 
-Działanie funkcji porównującej można rozłożyć na kilka etapów - na początek przechodzi ona po wszystkich parach symboli i oblicza różnice momentów hu, wartości kolorów (w HSV) i stosunku długości boków (najmniejszego prostokąta zawierającego cały symbol) dla każdej pary. Jeśli różnica momentów i stosunku długości jest w ustalonym przedziale akceptowalnych dopasowań, to taka para symboli jest zapisywana jako potencjalnie prawidłowe dopasowanie. Następnie dla wszystkich takich dopasowań porównywane są różnice kolorów symboli i te, których różnica kolorów jest najmniejsza są uznawane za prawidłowe dopasowanie. Między środkami tych symboli jest rysowana strzałka na głownym zdjęciu, co ma oznaczać, że te dwa symbole są identyczne z dokładnością do rozmiaru i rotacji.
+Dodatkowo w naszym programie rozpoznajemy na zdjęciu dopasowania symboli do 3 wybranych, wyciętych wcześniej - żarówki, klucza i pająka.
+\begin{center}
+\includegraphics[scale=0.4]{zarowka.jpg}
+\includegraphics[scale=0.4]{klucz.jpg}
+\includegraphics[scale=0.4]{pajak.jpg}
+\end{center}
+Dopasowania do tych symboli bedziemy oznaczali zapisaniem nazwy obrazu (np. pajak.jpg) na zdjęciu w miejscu, w którym wykryliśmy symbol. Do znajdowania takich dopasowań służy nam ta sama metoda porównywania, którą wykorzystujemy dla całych kart z tym tylko, że uruchamiamy ją dla pary karta - symbol.
 
 \newpage
 
@@ -58,7 +65,14 @@ Najpierw zajmujemy się wycięciem wszystkich 6 kart i wybieleniem tła (w celu 
 \includegraphics[scale=0.25]{2.1/card5.jpg}
 \end{center}
 Każda karta jest teraz indywidualnie rozjaśniana lub przyciemniana za pomocą korekcji gamma, żeby zniewlować różnice w oświetleniu wynikające np. z różnej odległości od źródła światła (w przypadku sztucznego oświetlenia).
-Następnie do każdej karty stosujemy threshold RGB, żeby następnie móc odnaleźć kontury symboli. Obrazy, na których szukamy konturów wyglądają w tej chwili tak:\\
+Następnie do każdej karty stosujemy threshold RGB, żeby następnie móc odnaleźć kontury symboli. Nasza metoda thresholdu RGB wywołuje threshold na każdym z kanałów z osobna - dla pierwszej karty jego zastosowanie pozwala nam na uzyskanie 3 obrazów:
+\begin{center}
+\includegraphics[scale=0.25]{2.1/red1.jpg}
+\includegraphics[scale=0.25]{2.1/green1.jpg}
+\includegraphics[scale=0.25]{2.1/blue1.jpg}\\
+ R \quad \qquad \qquad \qquad \qquad G \qquad \qquad \qquad \qquad \quad B
+\end{center}
+Jak widać, różnica w thresholdzie na poszczególnych kanałach jest znaczna - szczególnie dobrze widać to na kanale zielonym, gdzie zielone symbole żółwia i kaktusa są jedynie obrysami. Na takiej trójce obrazów, dla każdej z kart, wykonujemy binarny OR, co pozwala nam na uzyskanie symboli dobrze wypełnionych z ostrymi, poprawnymi konturami. Obrazy, na których szukamy konturów wyglądają w tej chwili (po wykonaniu thresholdu RGB) tak:\\
 \begin{center}
 \includegraphics[scale=0.25]{2.1/0.jpg}
 \includegraphics[scale=0.25]{2.1/1.jpg}
@@ -94,7 +108,10 @@ Na tym etapie pozostaje już tylko wywołanie funkcji dopasowywania dla wszystki
 \begin{center}
 \includegraphics[scale=0.25]{2.1/img_arrows0.jpg}
 \end{center}
-Jak widać, w tym przypadku udało się odnaleźć 100\% dopasowań.
+Jak widać, w tym przypadku udało się odnaleźć 100\% dopasowań. W tym miejscu warto też opisać w jaki sposób liczymy poprawność dopasowań - zakładamy, że dla $n$ kart chcemy uzyskać wszystkie $$\frac{n*(n-1)}{2}$$ dopasowań. Przy dopasowaniu wszystkich kart w prawidłowy sposób uznajemy, że udało się uzyskać wynik ze 100\% dokładności, a w ogólności dokładność to 
+$$\frac{x}{\frac{n*(n-1)}{2}} * 100\% $$ gdzie $x$ to ilość poprawnie narysowanych strzałek (pomiędzy odpowiadającymi symbolami).\\
+
+W wynikach w dalszej części sprawozdania pojawia się też opis dokładności w rodzaju "6 (z 10) dopasowań, dokładność 67\% (40\%)", oznacza to, że wykryto nie wszystkie karty (lub symbole) i udało się wykonać algorytm porównywania tylko dla 6 z 10 przypadków, gdzie jego dokładność wynosiła 67\%, co w ogólności daje dokładność wyniku 40\%.
 \newpage
 
 \subsection{Dwóch graczy, w perspektywie, sztuczne oświetlenie, duża różnica jasności między kartami}

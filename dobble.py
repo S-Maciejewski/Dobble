@@ -149,10 +149,13 @@ def findMinRectangle(img, cnt, offset):
 def getRGBthresh(img, blue, green, red, counter):
     # print("Card ", counter)
     ret1, img_blue_th = cv2.threshold(img[:, :, 0], blue, 255, cv2.THRESH_BINARY_INV)
+    cv2.imwrite("./debug/blue" + str(counter) + ".jpg", img_blue_th)
     # print("blue ", np.mean(img_blue_th))
     ret2, img_green_th = cv2.threshold(img[:, :, 1], green, 255, cv2.THRESH_BINARY_INV)
+    cv2.imwrite("./debug/green" + str(counter) + ".jpg", img_green_th)
     # print("green ", np.mean(img_green_th))
     ret3, img_red_th = cv2.threshold(img[:, :, 2], red, 255, cv2.THRESH_BINARY_INV)
+    cv2.imwrite("./debug/red" + str(counter) + ".jpg", img_red_th)
     # print("red ", np.mean(img_red_th))
     return cv2.bitwise_or(cv2.bitwise_or(img_blue_th, img_green_th, mask=None), img_red_th, mask=None)
 
@@ -303,7 +306,7 @@ allcards = []
 # files = ["01", "02", "03", "04", "12", "22", "23"] # easy
 # files = ["05", "06", "07", "08", "09", "18", "19", "21", "24", "26"]  # medium
 # files = ["11", "13", "14", "16", "20", "25", "27"] # hard
-files = ["17"] # fail
+files = ["04"] # fail
 
 
 for filenumber, file in enumerate(files):
