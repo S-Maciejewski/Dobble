@@ -1,8 +1,6 @@
 \documentclass[10pt,a4paper]{article}
-
-\usepackage{polski}
 \usepackage[utf8]{inputenc}
-
+\usepackage[T1]{fontenc}
 \usepackage[polish]{babel}
 \usepackage{hhline}
 \usepackage{pgfplots}
@@ -18,13 +16,13 @@
 \geometry{a4paper, total={170mm,257mm}, left=20mm, top=20mm }
 
 \author{Jan Techner 132332 i Sebastian Maciejewski 132275 \\ grupa I1}
-\title{Analiza zdjęć - \\ rozpoznawanie par symboli na kartach Dobble}
+\title{Analiza zdjęć - rozpoznawanie par symboli na kartach Dobble}
 \date{18 listopada 2018}
 \setlength{\parindent}{0pt}
 \newcommand{\forceindent}{\leavevmode{\parindent=3em\indent}}
+
 \begin{document}
 \maketitle
-
 \section{Wstęp}
 
 \forceindent Program, który napisaliśmy ma za zadanie pobrać od użytkownika zdjęcie stanu rozgrywki (od 2 do 5 graczy) i zaznaczenie na tym zdjęciu identycznych symboli występujących na różnych kartach. \\
@@ -295,25 +293,25 @@ W tej sekcji umieściliśmy najtrudniejsze do przeanalizowania zdjęcia. Białe 
 \newpage
 \begin{center}
 \includegraphics[scale=0.28]{hard/dobble11.jpg}
-\includegraphics[scale=0.28]{hard/img_arrows11.jpg}\\
+\includegraphics[scale=0.28]{hard/img_arrows1.jpg}\\
 3 dopasowania, dokładność 100\%
 \includegraphics[scale=0.28]{hard/dobble13.jpg}
-\includegraphics[scale=0.28]{hard/img_arrows13.jpg}\\
+\includegraphics[scale=0.28]{hard/img_arrows2.jpg}\\
 3 dopasowania, dokładność 67\%
 \includegraphics[scale=0.28]{hard/dobble14.jpg}
-\includegraphics[scale=0.28]{hard/img_arrows14.jpg}\\
+\includegraphics[scale=0.28]{hard/img_arrows3.jpg}\\
 10 dopasowań, dokładność 70\%
 \includegraphics[scale=0.28]{hard/dobble16.jpg}
-\includegraphics[scale=0.28]{hard/img_arrows16.jpg}\\
+\includegraphics[scale=0.28]{hard/img_arrows5.jpg}\\
 3 dopasowania, dokładność 67\%
 \includegraphics[scale=0.28]{hard/dobble20.jpg}
-\includegraphics[scale=0.28]{hard/img_arrows20.jpg}\\
+\includegraphics[scale=0.28]{hard/img_arrows7.jpg}\\
 6 (z 10) dopasowań, dokładność 83\% (50\%)
 \includegraphics[scale=0.28]{hard/dobble25.jpg}
-\includegraphics[scale=0.28]{hard/img_arrows25.jpg}\\
+\includegraphics[scale=0.28]{hard/img_arrows9.jpg}\\
 6 (z 10) dopasowań, dokładność 67\% (40\%)
 \includegraphics[scale=0.28]{hard/dobble27.jpg}
-\includegraphics[scale=0.28]{hard/img_arrows27.jpg}\\
+\includegraphics[scale=0.28]{hard/img_arrows8.jpg}\\
 6 (z 10) dopasowań, dokładność 83\% (50\%)
 \end{center}
 \newpage
@@ -325,7 +323,7 @@ Z dwoma zdjęciami nas program miał szczególne trudności:
 \end{center}
 W tych przypadkach nasz algorytm wykrywania kart i symboli nie poradził sobie ze słabym oświetleniem - być może za sprawą parametrów stosowanych przez nas filtrów (szczególnie threshold i korekcji gamma). Dla przykładu z żółtym światłem udało się nawet odnaleźć jakieś symbole, jednak nie były one prawidłowo połączone:
 \begin{center}
-\includegraphics[scale=0.28]{hard/img_arrows17.jpg}
+\includegraphics[scale=0.28]{hard/img_arrows6.jpg}
 \end{center}
 Mogłoby się wydawać, że w tym przypadku zawiodła funkcja porównująca karty, może porównywanie po kolorze, jednak na zdjęciu widać, że strzałki nie trafiają w środki symboli, co znaczy, że na poprzednim etapie przetwarzania (wycinaniu znaków z kart) załadowano błędne symbole. Taki błąd jest najpewniej spowodowany niskim kontrastem między wieloma symbolami a żółtym tłem karty.
 \end{document}
